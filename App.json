@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "Asri Store",
-    "architectureVersion": "1.1.0",
+    "architectureVersion": "1.2.0",
     "description": "Mobile-first e-commerce storefront architecture for React, Vite and TypeScript.",
     "framework": {
       "frontend": {
@@ -79,6 +79,7 @@
           "OrderSummary",
           "Pagination",
           "ProductCard",
+          "ProductGrid",
           "ProductSlider",
           "QuantitySelector",
           "RatingForms",
@@ -104,12 +105,19 @@
         "Feature components compose CommerceBlocks and domain-specific UI.",
         "Pages compose feature components and are rendered by exactly one page layout.",
         "Hooks encapsulate reusable interaction state; domain hooks remain in their feature modules.",
-        "Keep presentational components independent from Supabase and Duitku request details."
+        "Keep presentational components independent from Supabase and Duitku request details.",
+        "Every BaseComponents entry must have a visual specification in design_system.json.",
+        "Every CommerceBlocks entry must have a visual block specification in design_system.json.",
+        "ProductGrid is a first-class CommerceBlock composed from ProductCard."
       ]
     },
     "root": {
       "App": {
-        "children": ["AppShell", "StandalonePage", "Overlay"],
+        "children": [
+          "AppShell",
+          "StandalonePage",
+          "Overlay"
+        ],
         "responsibilities": [
           "Initialize application providers.",
           "Resolve the current route.",
@@ -157,9 +165,19 @@
       }
     },
     "composition": {
-      "Header": ["BaseComponents.Button", "BaseComponents.Badge", "BaseComponents.Icon"],
-      "BottomNavigation": ["BaseComponents.Button", "BaseComponents.Icon"],
-      "MainContent": ["FeatureComponents", "CommerceBlocks"]
+      "Header": [
+        "BaseComponents.Button",
+        "BaseComponents.Badge",
+        "BaseComponents.Icon"
+      ],
+      "BottomNavigation": [
+        "BaseComponents.Button",
+        "BaseComponents.Icon"
+      ],
+      "MainContent": [
+        "FeatureComponents",
+        "CommerceBlocks"
+      ]
     },
     "rules": [
       "Use AppShell for pages that share the storefront header and bottom navigation.",
@@ -212,9 +230,18 @@
       }
     },
     "composition": {
-      "StandaloneHeader": ["BaseComponents.Button", "BaseComponents.Icon"],
-      "BottomActionBar": ["BaseComponents.Button", "CommerceBlocks.OrderSummary"],
-      "PageContent": ["FeatureComponents", "CommerceBlocks"]
+      "StandaloneHeader": [
+        "BaseComponents.Button",
+        "BaseComponents.Icon"
+      ],
+      "BottomActionBar": [
+        "BaseComponents.Button",
+        "CommerceBlocks.OrderSummary"
+      ],
+      "PageContent": [
+        "FeatureComponents",
+        "CommerceBlocks"
+      ]
     },
     "rules": [
       "Use StandalonePage for focused flows that should not display the storefront BottomNavigation.",
@@ -256,10 +283,27 @@
       ]
     },
     "composition": {
-      "Modal": ["BaseComponents.Modal", "BaseComponents.Button"],
-      "Drawer": ["BaseComponents.Drawer", "BaseComponents.Button"],
-      "BottomSheet": ["BaseComponents.Drawer", "BaseComponents.Button"],
-      "Popover": ["BaseComponents.Dropdown", "BaseComponents.Tooltip"]
+      "Modal": [
+        "BaseComponents.Modal",
+        "BaseComponents.Button"
+      ],
+      "Drawer": [
+        "BaseComponents.Drawer",
+        "BaseComponents.Button"
+      ],
+      "BottomSheet": [
+        "BaseComponents.Drawer",
+        "BaseComponents.Button"
+      ],
+      "Popover": [
+        "BaseComponents.Dropdown",
+        "BaseComponents.Tooltip"
+      ],
+      "QuickView": [
+        "BaseComponents.Modal",
+        "CommerceBlocks.ProductCard",
+        "BaseComponents.Button"
+      ]
     },
     "interactionHooks": [
       "InteractionHooks.useDisclosure",
@@ -272,7 +316,9 @@
       "Any page in AppShell or StandalonePage may request an overlay.",
       "Overlay visibility and state must be controlled independently from route navigation.",
       "Provide accessible labels, focus handling, keyboard dismissal, and appropriate modal semantics.",
-      "Restore focus to the invoking element after dismissing modal or drawer overlays."
+      "Restore focus to the invoking element after dismissing modal or drawer overlays.",
+      "QuickView is a transient product-preview overlay, not a route or page layout.",
+      "ProductQuickView must use the shared QuickView composition and approved product data; do not create a separate page route."
     ]
   },
   "featureArchitecture": {
@@ -289,6 +335,7 @@
         ],
         "commerceBlocks": [
           "CommerceBlocks.ProductCard",
+          "CommerceBlocks.ProductGrid",
           "CommerceBlocks.ProductSlider",
           "CommerceBlocks.Gallery",
           "CommerceBlocks.Filters",
@@ -484,7 +531,8 @@
       "The approved design system remains the source of truth for colors, typography, spacing, sizing, radii and visual variants.",
       "Storefront UI is a reference library; its examples must be adapted to Asri conventions.",
       "Do not install packages, create application source files or alter backend configuration as part of an App.json-only architecture update.",
-      "Version architecture changes incrementally and record material deviations from the Storefront UI reference."
+      "Version architecture changes incrementally and record material deviations from the Storefront UI reference.",
+      "Keep BaseComponents, CommerceBlocks and InteractionHooks names synchronized with design_system.json implementation namespace mappings."
     ]
   }
 }
