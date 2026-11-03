@@ -1657,6 +1657,13 @@
       "CommerceBlocks.ProductGrid": [
         "components.ProductGrid",
         "components.ProductCard"
+      ],
+      "Overlay.Toast": [
+        "components.Toast"
+      ],
+      "Overlay.Popover": [
+        "components.Popover",
+        "components.Tooltip"
       ]
     },
     "rules": [
