@@ -508,6 +508,19 @@
         "width": "100%",
         "maxWidth": "1280px",
         "paddingInline": "32px"
+      },
+      "role": "viewport-container",
+      "storefrontFrame": {
+        "width": "100%",
+        "maxWidth": "767px",
+        "centerOnWideViewport": true,
+        "purpose": "Constrain the actual mobile-first storefront canvas inside the wider viewport container.",
+        "rules": [
+          "The mobile, tablet and desktop container widths describe the outer viewport container, not the storefront canvas.",
+          "The storefrontFrame is the inner application canvas and remains capped at 767px at every viewport width.",
+          "Center storefrontFrame within the outer container on tablet and desktop.",
+          "Do not stretch product cards or page content to the full 960px or 1280px outer container width."
+        ]
       }
     },
     "grid": {
@@ -587,14 +600,16 @@
       "horizontalPadding": "16px",
       "sectionSpacing": "24px",
       "maxWidth": "767px",
-      "centerOnWideViewport": true
+      "centerOnWideViewport": true,
+      "maxWidthMeaning": "Maximum width of the inner storefrontFrame, not the outer responsive viewport container."
     },
     "rules": [
       "AppShell and StandalonePage are the two page layout families defined by App.json.",
       "A route must use one page layout only.",
       "BottomActionBar belongs to StandalonePage and remains in normal document flow.",
       "BottomNavigation belongs to AppShell and must not be duplicated on StandalonePage.",
-      "Overlay is rendered independently of page layout."
+      "Overlay is rendered independently of page layout.",
+      "The page maxWidth of 767px applies to the inner storefrontFrame; responsive.container breakpoints describe the outer viewport container."
     ]
   },
   "components": {
@@ -1883,7 +1898,8 @@
         "Every App.json CommerceBlocks item exists in design_system.json blocks.",
         "Every App.json Overlay group has a matching visual component and implementation mapping.",
         "Every componentMapping target resolves to a defined component, block, or typography text style.",
-        "Every token reference resolves through canonical tokens or an explicit alias."
+        "Every token reference resolves through canonical tokens or an explicit alias.",
+        "The page maxWidth is explicitly defined as the storefrontFrame width and is distinct from outer viewport container widths."
       ],
       "expectedCommand": "node scripts/validate-design-contract.mjs",
       "commandStatus": "not-yet-implemented",
