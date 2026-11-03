@@ -1,0 +1,1076 @@
+{
+  "metadata": {
+    "name": "Asri Store Design System",
+    "product": "Asri Store",
+    "version": "1.1.0",
+    "status": "proposed",
+    "format": "design-system",
+    "language": "en",
+    "description": "Visual design tokens, component appearance, interaction states and responsive presentation rules for the Asri Store application.",
+    "architectureReference": {
+      "file": "App.json",
+      "version": "1.1.0",
+      "rootGroups": ["AppShell", "StandalonePage", "Overlay"]
+    },
+    "uiReference": {
+      "name": "Storefront UI",
+      "version": "2",
+      "url": "https://docs.storefrontui.io/v2/",
+      "usage": "Reference patterns only. Asri visual identity and this design system take precedence over library defaults."
+    },
+    "framework": {
+      "ui": "React",
+      "bundler": "Vite",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "icons": "lucide-react",
+      "backend": "Supabase"
+    }
+  },
+  "principles": {
+    "brand": [
+      "Create a modern, calm, polished and approachable fashion storefront.",
+      "Keep Asri's own visual identity; do not reproduce Storefront UI demos or another retailer's branding.",
+      "Use a restrained palette, clear hierarchy, generous whitespace and consistent component behavior.",
+      "Prioritize product imagery and purchase clarity over decorative UI."
+    ],
+    "productExperience": [
+      "Mobile-first shopping experience with responsive enhancement for wider screens.",
+      "Make product discovery, product evaluation and checkout actions easy to understand.",
+      "Use consistent feedback for loading, success, validation, empty and error states.",
+      "Keep purchase-related information visible and unambiguous."
+    ],
+    "implementation": [
+      "Tokens are the source of truth for visual values.",
+      "Components consume semantic tokens rather than arbitrary one-off values.",
+      "Visual presentation must remain separate from domain logic, data access and payment processing.",
+      "Storefront UI components may inform behavior and composition but must be adapted to Asri tokens."
+    ]
+  },
+  "brandIdentity": {
+    "brandName": "Asri Store",
+    "tagline": "Tampil Elegan, Setiap Hari",
+    "visualDirection": ["modern", "minimal", "premium", "clean", "fashion-focused"],
+    "personality": ["elegant", "confident", "clear", "welcoming"],
+    "avoid": [
+      "Unmodified Storefront UI default theme",
+      "Excessive gradients and decorative effects",
+      "Overly dense layouts",
+      "Unnecessary animation",
+      "Competing accent colors",
+      "Inconsistent radii, shadows or button treatments"
+    ]
+  },
+  "tokens": {
+    "color": {
+      "brand": {
+        "primary": {
+          "50": "#EFF6FF",
+          "100": "#DBEAFE",
+          "200": "#BFDBFE",
+          "300": "#93C5FD",
+          "400": "#60A5FA",
+          "500": "#3B82F6",
+          "600": "#2563EB",
+          "700": "#1D4ED8",
+          "800": "#1E40AF",
+          "900": "#1E3A8A",
+          "default": "#2563EB",
+          "hover": "#1D4ED8",
+          "active": "#1E40AF",
+          "foreground": "#FFFFFF"
+        },
+        "secondary": {
+          "50": "#FFF7ED",
+          "100": "#FFEDD5",
+          "200": "#FED7AA",
+          "300": "#FDBA74",
+          "400": "#FB923C",
+          "500": "#F97316",
+          "600": "#EA580C",
+          "700": "#C2410C",
+          "800": "#9A3412",
+          "900": "#7C2D12",
+          "default": "#F97316",
+          "hover": "#EA580C",
+          "active": "#C2410C",
+          "foreground": "#FFFFFF"
+        }
+      },
+      "neutral": {
+        "white": "#FFFFFF",
+        "black": "#000000",
+        "gray": {
+          "25": "#FCFCFD",
+          "50": "#F9FAFB",
+          "100": "#F3F4F6",
+          "200": "#E5E7EB",
+          "300": "#D1D5DB",
+          "400": "#9CA3AF",
+          "500": "#6B7280",
+          "600": "#4B5563",
+          "700": "#374151",
+          "800": "#1F2937",
+          "900": "#111827",
+          "950": "#030712"
+        }
+      },
+      "semantic": {
+        "success": {
+          "50": "#F0FDF4",
+          "100": "#DCFCE7",
+          "500": "#22C55E",
+          "600": "#16A34A",
+          "700": "#15803D",
+          "foreground": "#14532D"
+        },
+        "warning": {
+          "50": "#FFFBEB",
+          "100": "#FEF3C7",
+          "500": "#F59E0B",
+          "600": "#D97706",
+          "700": "#B45309",
+          "foreground": "#78350F"
+        },
+        "danger": {
+          "50": "#FEF2F2",
+          "100": "#FEE2E2",
+          "500": "#EF4444",
+          "600": "#DC2626",
+          "700": "#B91C1C",
+          "foreground": "#7F1D1D"
+        },
+        "info": {
+          "50": "#EFF6FF",
+          "100": "#DBEAFE",
+          "500": "#3B82F6",
+          "600": "#2563EB",
+          "700": "#1D4ED8",
+          "foreground": "#1E3A8A"
+        }
+      },
+      "surface": {
+        "page": "#FFFFFF",
+        "default": "#FFFFFF",
+        "subtle": "#F9FAFB",
+        "muted": "#F3F4F6",
+        "raised": "#FFFFFF",
+        "sunken": "#F3F4F6",
+        "inverse": "#111827",
+        "brand": "#EFF6FF",
+        "brandStrong": "#2563EB"
+      },
+      "text": {
+        "primary": "#111827",
+        "secondary": "#4B5563",
+        "muted": "#6B7280",
+        "disabled": "#9CA3AF",
+        "inverse": "#FFFFFF",
+        "link": "#2563EB",
+        "linkHover": "#1D4ED8",
+        "onBrand": "#FFFFFF",
+        "success": "#15803D",
+        "warning": "#B45309",
+        "danger": "#B91C1C"
+      },
+      "border": {
+        "default": "#E5E7EB",
+        "subtle": "#F3F4F6",
+        "strong": "#D1D5DB",
+        "focus": "#2563EB",
+        "error": "#DC2626",
+        "success": "#16A34A"
+      },
+      "overlay": {
+        "scrim": "rgba(17, 24, 39, 0.48)",
+        "scrimStrong": "rgba(17, 24, 39, 0.64)"
+      },
+      "commerce": {
+        "price": "#111827",
+        "compareAtPrice": "#6B7280",
+        "discount": "#DC2626",
+        "outOfStock": "#6B7280",
+        "available": "#15803D",
+        "rating": "#F59E0B"
+      },
+      "rules": [
+        "Use brand.primary for primary actions, selected controls and key interactive emphasis.",
+        "Use brand.secondary sparingly for promotions and supporting emphasis, not as a second primary action color.",
+        "Use semantic colors only for their matching status meaning.",
+        "Do not use color alone to communicate availability, payment or order status.",
+        "Do not introduce a new brand hue at component level without updating this token source."
+      ]
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+        "display": "Inter, ui-sans-serif, system-ui, sans-serif",
+        "mono": "ui-monospace, SFMono-Regular, Menlo, monospace"
+      },
+      "weights": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "fontSize": {
+        "xs": "12px",
+        "sm": "14px",
+        "base": "16px",
+        "lg": "18px",
+        "xl": "20px",
+        "2xl": "24px",
+        "3xl": "30px",
+        "4xl": "36px"
+      },
+      "lineHeight": {
+        "tight": 1.2,
+        "snug": 1.35,
+        "normal": 1.5,
+        "relaxed": 1.65
+      },
+      "letterSpacing": {
+        "tight": "-0.02em",
+        "normal": "0",
+        "wide": "0.02em"
+      },
+      "textStyles": {
+        "display": { "fontSize": "30px", "lineHeight": 1.2, "fontWeight": 700 },
+        "pageTitle": { "fontSize": "24px", "lineHeight": 1.3, "fontWeight": 600 },
+        "sectionTitle": { "fontSize": "20px", "lineHeight": 1.35, "fontWeight": 600 },
+        "cardTitle": { "fontSize": "16px", "lineHeight": 1.4, "fontWeight": 600 },
+        "body": { "fontSize": "14px", "lineHeight": 1.5, "fontWeight": 400 },
+        "bodyEmphasis": { "fontSize": "14px", "lineHeight": 1.5, "fontWeight": 600 },
+        "caption": { "fontSize": "12px", "lineHeight": 1.45, "fontWeight": 400 },
+        "button": { "fontSize": "14px", "lineHeight": 1.2, "fontWeight": 600 },
+        "price": { "fontSize": "16px", "lineHeight": 1.35, "fontWeight": 700 }
+      },
+      "rules": [
+        "Use Inter consistently across the storefront.",
+        "Use tabular numerals for prices, quantities and order identifiers where supported.",
+        "Avoid using font size alone to establish hierarchy; combine size, weight and spacing.",
+        "Use sentence case for interface labels."
+      ]
+    },
+    "spacing": {
+      "unit": "4px",
+      "scale": {
+        "0": "0px",
+        "1": "4px",
+        "2": "8px",
+        "3": "12px",
+        "4": "16px",
+        "5": "20px",
+        "6": "24px",
+        "7": "28px",
+        "8": "32px",
+        "10": "40px",
+        "12": "48px",
+        "16": "64px"
+      },
+      "component": {
+        "inlineGap": "8px",
+        "controlGap": "12px",
+        "cardPadding": "12px",
+        "sectionGap": "24px",
+        "pageGutterMobile": "16px",
+        "pageGutterWide": "24px"
+      },
+      "rules": [
+        "Use the 4px base spacing scale.",
+        "Prefer consistent spacing tokens over arbitrary margins.",
+        "Keep dense product information readable with clear grouping."
+      ]
+    },
+    "sizing": {
+      "controlHeight": {
+        "sm": "36px",
+        "md": "44px",
+        "lg": "48px"
+      },
+      "icon": {
+        "xs": "14px",
+        "sm": "16px",
+        "md": "20px",
+        "lg": "24px",
+        "xl": "28px"
+      },
+      "touchTarget": {
+        "minimum": "44px",
+        "recommended": "48px"
+      },
+      "content": {
+        "mobileMaxWidth": "767px",
+        "tabletMaxWidth": "1023px",
+        "desktopMaxWidth": "1280px"
+      },
+      "rules": [
+        "Interactive controls must meet a 44px minimum target where practical.",
+        "Do not shrink icon-only controls below the minimum accessible target.",
+        "Keep the mobile storefront centered and readable on wider viewports."
+      ]
+    },
+    "radius": {
+      "none": "0px",
+      "xs": "6px",
+      "sm": "8px",
+      "md": "10px",
+      "lg": "12px",
+      "xl": "16px",
+      "2xl": "20px",
+      "full": "9999px"
+    },
+    "border": {
+      "width": {
+        "none": "0px",
+        "thin": "1px",
+        "medium": "2px"
+      },
+      "style": "solid"
+    },
+    "shadow": {
+      "none": "none",
+      "sm": "0 1px 2px rgba(17, 24, 39, 0.05)",
+      "md": "0 4px 12px rgba(17, 24, 39, 0.08)",
+      "lg": "0 12px 28px rgba(17, 24, 39, 0.12)",
+      "overlay": "0 16px 48px rgba(17, 24, 39, 0.18)"
+    },
+    "opacity": {
+      "disabled": 0.48,
+      "muted": 0.72,
+      "overlay": 0.48
+    },
+    "zIndex": {
+      "base": 0,
+      "sticky": 10,
+      "dropdown": 20,
+      "headerPopover": 30,
+      "backdrop": 40,
+      "drawer": 50,
+      "modal": 60,
+      "toast": 70,
+      "tooltip": 80
+    },
+    "motion": {
+      "duration": {
+        "instant": "0ms",
+        "fast": "120ms",
+        "normal": "200ms",
+        "slow": "280ms"
+      },
+      "easing": {
+        "standard": "cubic-bezier(0.2, 0, 0, 1)",
+        "emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+        "exit": "cubic-bezier(0.4, 0, 1, 1)"
+      },
+      "rules": [
+        "Motion should clarify state changes and spatial transitions.",
+        "Avoid decorative or continuous motion.",
+        "Respect prefers-reduced-motion and provide a reduced-motion experience."
+      ]
+    }
+  },
+  "themes": {
+    "default": "light",
+    "supported": ["light", "dark", "system"],
+    "light": {
+      "surface.page": "#FFFFFF",
+      "surface.default": "#FFFFFF",
+      "surface.subtle": "#F9FAFB",
+      "text.primary": "#111827",
+      "text.secondary": "#4B5563",
+      "border.default": "#E5E7EB"
+    },
+    "dark": {
+      "surface.page": "#111827",
+      "surface.default": "#1F2937",
+      "surface.subtle": "#374151",
+      "surface.muted": "#374151",
+      "text.primary": "#F9FAFB",
+      "text.secondary": "#D1D5DB",
+      "text.muted": "#9CA3AF",
+      "border.default": "#374151",
+      "border.subtle": "#1F2937",
+      "brand.primary": "#60A5FA",
+      "brand.secondary": "#FB923C"
+    },
+    "rules": [
+      "All semantic tokens must resolve in every supported theme.",
+      "Do not hardcode light-theme colors in reusable components.",
+      "System theme follows the operating-system preference."
+    ]
+  },
+  "responsive": {
+    "strategy": "mobile-first",
+    "breakpoints": {
+      "xs": "320px",
+      "sm": "390px",
+      "md": "640px",
+      "lg": "768px",
+      "xl": "1024px",
+      "2xl": "1280px"
+    },
+    "supportedViewport": {
+      "minimumWidth": "320px",
+      "mobile": "320px-767px",
+      "tablet": "768px-1023px",
+      "desktop": "1024px-and-up"
+    },
+    "container": {
+      "mobile": { "width": "100%", "maxWidth": "767px", "paddingInline": "16px" },
+      "tablet": { "width": "100%", "maxWidth": "960px", "paddingInline": "24px" },
+      "desktop": { "width": "100%", "maxWidth": "1280px", "paddingInline": "32px" }
+    },
+    "grid": {
+      "productMobile": { "columns": 2, "gap": "12px" },
+      "productTablet": { "columns": 3, "gap": "16px" },
+      "productDesktop": { "columns": 4, "gap": "20px" }
+    },
+    "rules": [
+      "Design and validate at 320px width before scaling up.",
+      "The primary storefront experience is mobile-first.",
+      "At wider widths, keep the mobile storefront constrained and centered rather than stretching product cards excessively.",
+      "Do not use 100vh or 100dvh as a required app-shell height token.",
+      "Use flexible layout sizing and natural document flow for page content.",
+      "Do not introduce horizontal page overflow."
+    ]
+  },
+  "layout": {
+    "appShell": {
+      "direction": "column",
+      "minHeight": "100%",
+      "header": {
+        "height": "56px",
+        "background": "surface.default",
+        "borderBottom": "border.default",
+        "position": "sticky",
+        "zIndex": "sticky"
+      },
+      "mainContent": {
+        "flex": 1,
+        "minWidth": "0",
+        "background": "surface.page",
+        "scrollBehavior": "native"
+      },
+      "bottomNavigation": {
+        "height": "64px",
+        "background": "surface.default",
+        "borderTop": "border.default",
+        "position": "sticky",
+        "zIndex": "sticky",
+        "itemCount": 5
+      }
+    },
+    "standalonePage": {
+      "direction": "column",
+      "minHeight": "100%",
+      "header": {
+        "height": "56px",
+        "background": "surface.default",
+        "borderBottom": "border.default"
+      },
+      "content": {
+        "flex": 1,
+        "paddingBottom": "24px"
+      },
+      "bottomActionBar": {
+        "position": "natural-flow",
+        "background": "surface.default",
+        "borderTop": "border.default",
+        "padding": "12px 16px",
+        "safeAreaInset": "env(safe-area-inset-bottom, 0px)",
+        "fixed": false,
+        "absolute": false,
+        "overlayContent": false,
+        "optional": true
+      }
+    },
+    "page": {
+      "horizontalPadding": "16px",
+      "sectionSpacing": "24px",
+      "maxWidth": "767px",
+      "centerOnWideViewport": true
+    },
+    "rules": [
+      "AppShell and StandalonePage are the two page layout families defined by App.json.",
+      "A route must use one page layout only.",
+      "BottomActionBar belongs to StandalonePage and remains in normal document flow.",
+      "BottomNavigation belongs to AppShell and must not be duplicated on StandalonePage.",
+      "Overlay is rendered independently of page layout."
+    ]
+  },
+  "components": {
+    "Button": {
+      "height": { "sm": "36px", "md": "44px", "lg": "48px" },
+      "radius": "md",
+      "paddingInline": { "sm": "12px", "md": "16px", "lg": "20px" },
+      "font": "button",
+      "variants": {
+        "primary": { "background": "brand.primary.default", "foreground": "#FFFFFF", "border": "transparent" },
+        "secondary": { "background": "surface.default", "foreground": "text.primary", "border": "border.default" },
+        "outline": { "background": "transparent", "foreground": "brand.primary.default", "border": "brand.primary.default" },
+        "ghost": { "background": "transparent", "foreground": "text.primary", "border": "transparent" },
+        "danger": { "background": "semantic.danger.600", "foreground": "#FFFFFF", "border": "transparent" }
+      },
+      "states": {
+        "hover": "darken-background-or-strengthen-border",
+        "active": "use-brand-active-token",
+        "focus": "visible-focus-ring",
+        "disabled": "reduced-opacity-no-pointer",
+        "loading": "preserve-width-show-progress-indicator"
+      },
+      "rules": ["Use one visually dominant primary action per context.", "Do not use color alone to distinguish destructive actions."]
+    },
+    "IconButton": {
+      "size": "44px",
+      "iconSize": "20px",
+      "radius": "full",
+      "variants": ["default", "subtle", "ghost"],
+      "rules": ["Provide an accessible name.", "Maintain a 44px target even when the visible icon is smaller."]
+    },
+    "Input": {
+      "height": "44px",
+      "paddingInline": "12px",
+      "radius": "md",
+      "background": "surface.default",
+      "border": "border.default",
+      "text": "text.primary",
+      "placeholder": "text.muted",
+      "states": {
+        "focus": "border.focus-and-focus-ring",
+        "error": "border.error-and-error-message",
+        "disabled": "surface.muted-and-text.disabled"
+      }
+    },
+    "Textarea": {
+      "minHeight": "96px",
+      "padding": "12px",
+      "radius": "md",
+      "resize": "vertical"
+    },
+    "Select": {
+      "height": "44px",
+      "radius": "md",
+      "paddingInline": "12px",
+      "indicator": "chevron-down"
+    },
+    "Checkbox": {
+      "size": "18px",
+      "radius": "xs",
+      "selected": "brand.primary.default",
+      "focus": "visible-focus-ring"
+    },
+    "Radio": {
+      "size": "18px",
+      "selected": "brand.primary.default",
+      "focus": "visible-focus-ring"
+    },
+    "Switch": {
+      "width": "40px",
+      "height": "24px",
+      "thumbSize": "20px",
+      "on": "brand.primary.default",
+      "off": "neutral.gray.300"
+    },
+    "Badge": {
+      "minHeight": "22px",
+      "paddingInline": "8px",
+      "radius": "full",
+      "fontSize": "12px",
+      "variants": ["neutral", "brand", "success", "warning", "danger", "info"]
+    },
+    "Chip": {
+      "minHeight": "32px",
+      "paddingInline": "12px",
+      "radius": "full",
+      "variants": ["default", "selected", "filter", "removable"]
+    },
+    "Card": {
+      "background": "surface.default",
+      "border": "border.default",
+      "radius": "lg",
+      "shadow": "none",
+      "padding": "12px",
+      "interactive": { "hover": "subtle-border-or-shadow", "focus": "visible-focus-ring" }
+    },
+    "ProductCard": {
+      "layout": "vertical",
+      "imageAspectRatio": "1:1",
+      "imageFit": "cover",
+      "imageBackground": "surface.subtle",
+      "radius": "lg",
+      "padding": "0px",
+      "contentGap": "8px",
+      "titleLines": 2,
+      "priceEmphasis": "strong",
+      "discountBadge": "top-left",
+      "wishlistAction": "top-right",
+      "rules": [
+        "Product image is the primary visual element.",
+        "Keep product title, current price and relevant availability easy to scan.",
+        "Do not show fabricated reviews, stock counts or discounts.",
+        "Do not let a long title cause inconsistent card heights."
+      ]
+    },
+    "ProductGallery": {
+      "mainImageAspectRatio": "1:1",
+      "thumbnailSize": "64px",
+      "thumbnailGap": "8px",
+      "imageFit": "contain",
+      "background": "surface.subtle"
+    },
+    "QuantitySelector": {
+      "height": "40px",
+      "buttonWidth": "40px",
+      "inputMinWidth": "40px",
+      "radius": "md",
+      "border": "border.default"
+    },
+    "Rating": {
+      "icon": "star",
+      "filledColor": "commerce.rating",
+      "emptyColor": "neutral.gray.300",
+      "size": "14px"
+    },
+    "Tabs": {
+      "height": "44px",
+      "activeIndicator": "brand.primary.default",
+      "inactiveText": "text.secondary"
+    },
+    "Pagination": {
+      "itemSize": "40px",
+      "radius": "md",
+      "active": "brand.primary.default"
+    },
+    "Alert": {
+      "radius": "md",
+      "padding": "12px",
+      "variants": ["info", "success", "warning", "danger"]
+    },
+    "Loader": {
+      "spinnerSize": "24px",
+      "strokeWidth": "2px",
+      "color": "brand.primary.default"
+    },
+    "Skeleton": {
+      "background": "neutral.gray.100",
+      "highlight": "neutral.gray.50",
+      "radius": "md",
+      "animation": "subtle-pulse"
+    },
+    "Modal": {
+      "width": { "mobile": "calc(100% - 32px)", "desktop": "480px" },
+      "maxHeight": "90vh",
+      "radius": "xl",
+      "padding": "20px",
+      "shadow": "overlay",
+      "backdrop": "overlay.scrim"
+    },
+    "Drawer": {
+      "mobileWidth": "min(88vw, 360px)",
+      "desktopWidth": "400px",
+      "background": "surface.default",
+      "shadow": "overlay",
+      "backdrop": "overlay.scrim"
+    },
+    "BottomSheet": {
+      "width": "100%",
+      "maxWidth": "767px",
+      "radiusTop": "xl",
+      "background": "surface.default",
+      "shadow": "overlay",
+      "backdrop": "overlay.scrim",
+      "handle": { "width": "40px", "height": "4px", "color": "neutral.gray.300" }
+    },
+    "Toast": {
+      "minHeight": "48px",
+      "radius": "md",
+      "shadow": "md",
+      "position": "top-center",
+      "variants": ["success", "error", "info"]
+    },
+    "Tooltip": {
+      "background": "surface.inverse",
+      "foreground": "text.inverse",
+      "radius": "sm",
+      "fontSize": "12px",
+      "maxWidth": "240px"
+    },
+    "Popover": {
+      "background": "surface.default",
+      "border": "border.default",
+      "radius": "md",
+      "shadow": "md",
+      "padding": "8px"
+    },
+    "OrderStatus": {
+      "style": "semantic-badge",
+      "mustIncludeText": true,
+      "rules": ["Always pair status color with a readable status label.", "Map only confirmed backend order states to visual statuses."]
+    },
+    "BottomNavigation": {
+      "height": "64px",
+      "items": 5,
+      "iconSize": "20px",
+      "labelSize": "11px",
+      "activeColor": "brand.primary.default",
+      "inactiveColor": "text.muted",
+      "background": "surface.default",
+      "borderTop": "border.default"
+    },
+    "Header": {
+      "height": "56px",
+      "horizontalPadding": "16px",
+      "logoMaxHeight": "28px",
+      "actionTarget": "44px",
+      "background": "surface.default",
+      "borderBottom": "border.default"
+    },
+    "BottomActionBar": {
+      "minHeight": "64px",
+      "padding": "12px 16px",
+      "gap": "12px",
+      "background": "surface.default",
+      "borderTop": "border.default",
+      "position": "natural-flow",
+      "fixed": false,
+      "absolute": false,
+      "optional": true
+    }
+  },
+  "blocks": {
+    "ProductSlider": {
+      "card": "ProductCard",
+      "gap": "12px",
+      "scroll": "horizontal",
+      "snap": "start",
+      "showScrollbar": false
+    },
+    "ProductGrid": {
+      "columns": { "mobile": 2, "tablet": 3, "desktop": 4 },
+      "gap": { "mobile": "12px", "tablet": "16px", "desktop": "20px" },
+      "card": "ProductCard"
+    },
+    "Filters": {
+      "presentation": "BottomSheet-or-Drawer",
+      "selectedFilter": "Chip.selected",
+      "applyAction": "Button.primary",
+      "clearAction": "Button.ghost"
+    },
+    "Search": {
+      "control": "Input",
+      "height": "44px",
+      "leadingIcon": "search",
+      "clearAction": "IconButton"
+    },
+    "Gallery": {
+      "main": "ProductGallery.mainImage",
+      "thumbnails": "ProductGallery.thumbnail",
+      "preview": "Overlay.Modal"
+    },
+    "Checkout": {
+      "sections": ["CustomerInformation", "ShippingAddress", "ShippingMethod", "PaymentMethod", "OrderSummary"],
+      "sectionSpacing": "24px",
+      "fieldGap": "12px",
+      "summary": "Card",
+      "primaryAction": "StandalonePage.BottomActionBar"
+    },
+    "OrderSummary": {
+      "container": "Card",
+      "rowGap": "8px",
+      "totalEmphasis": "strong",
+      "priceAlignment": "end"
+    },
+    "FormFields": {
+      "labelGap": "6px",
+      "fieldGap": "12px",
+      "errorText": "semantic.danger.700",
+      "helperText": "text.muted"
+    },
+    "Alert": {
+      "container": "components.Alert",
+      "iconSize": "20px",
+      "contentGap": "8px"
+    },
+    "Pagination": {
+      "control": "components.Pagination",
+      "alignment": "center",
+      "topSpacing": "24px"
+    },
+    "Review": {
+      "rating": "components.Rating",
+      "card": "components.Card",
+      "contentGap": "8px"
+    }
+  },
+  "pagePatterns": {
+    "AppShell": {
+      "HomePage": ["Header", "HeroBanner", "CategoryShortcuts", "ProductSlider", "ProductGrid", "BottomNavigation"],
+      "ShopPage": ["Header", "Search", "CategoryOrFilterControls", "ProductGrid", "BottomNavigation"],
+      "CategoriesPage": ["Header", "CategoryGrid", "BottomNavigation"],
+      "SearchPage": ["Header", "Search", "SearchResultsOrEmptyState", "BottomNavigation"],
+      "WishlistPage": ["Header", "ProductGridOrEmptyState", "BottomNavigation"],
+      "CartPage": ["Header", "CartList", "OrderSummary", "BottomNavigation"],
+      "OrdersPage": ["Header", "OrderCardList", "EmptyState", "BottomNavigation"],
+      "OrderDetailPage": ["Header", "OrderStatus", "OrderTimeline", "OrderItems", "OrderSummary", "BottomNavigation"],
+      "ProfilePage": ["Header", "ProfileSummary", "AccountMenu", "BottomNavigation"]
+    },
+    "StandalonePage": {
+      "ProductDetailPage": ["StandaloneHeader", "ProductGallery", "ProductInformation", "VariantSelector", "QuantitySelector", "ProductDetails", "BottomActionBar"],
+      "CheckoutPage": ["StandaloneHeader", "Checkout", "OrderSummary", "BottomActionBar"],
+      "ShippingAddressPage": ["StandaloneHeader", "FormFields", "BottomActionBar"],
+      "PaymentPage": ["StandaloneHeader", "PaymentInstructionsOrMethods", "OrderSummary", "BottomActionBar"],
+      "PaymentReturnPage": ["StandaloneHeader", "PaymentStatus", "NextStepInformation"],
+      "OrderSuccessPage": ["StandaloneHeader", "SuccessState", "OrderSummary", "BottomActionBar"],
+      "OrderTrackingPage": ["StandaloneHeader", "OrderTimeline", "ShippingInformation"],
+      "EditProfilePage": ["StandaloneHeader", "FormFields", "BottomActionBar"],
+      "ReturnRefundPage": ["StandaloneHeader", "ReturnInformation", "FormFields", "BottomActionBar"],
+      "NotFoundPage": ["StandaloneHeader", "NotFoundState"]
+    },
+    "rules": [
+      "Page patterns describe visual composition, not route definitions or business logic.",
+      "Follow App.json for page ownership and layout classification.",
+      "Only include BottomActionBar when a page has a primary action.",
+      "Do not duplicate header or navigation elements already provided by the active layout."
+    ]
+  },
+  "interactions": {
+    "button": {
+      "hover": "subtle-color-transition",
+      "active": "pressed-state",
+      "focus": "visible-focus-ring",
+      "disabled": "non-interactive-visual-state",
+      "loading": "retain-label-when-space-allows-and-show-spinner"
+    },
+    "input": {
+      "focus": "border-and-ring",
+      "invalid": "error-border-and-associated-message",
+      "filled": "retain-label-and-value-clarity"
+    },
+    "selection": {
+      "selected": "brand-color-plus-check-or-indicator",
+      "unselected": "neutral-border",
+      "disabled": "reduced-contrast-without-losing-legibility"
+    },
+    "overlay": {
+      "open": "short-fade-and-slide",
+      "close": "short-reverse-transition",
+      "modal": "trap-focus-and-restore-focus",
+      "drawer": "dismiss-on-escape-and-explicit-close",
+      "bottomSheet": "support-keyboard-and-screen-reader-dismissal"
+    },
+    "navigation": {
+      "active": "brand.primary.default",
+      "inactive": "text.muted",
+      "transition": "fast"
+    },
+    "rules": [
+      "Every interactive element has hover, focus, active and disabled behavior where applicable.",
+      "Do not make essential actions depend on hover.",
+      "Use the interaction semantics of React components; do not copy Vue composables or APIs.",
+      "Use accessible state attributes such as aria-expanded, aria-selected and aria-invalid where appropriate."
+    ]
+  },
+  "states": {
+    "loading": {
+      "pattern": "skeleton-for-content-and-loader-for-actions",
+      "avoid": ["blank-page", "layout-shift", "fake-product-data"]
+    },
+    "empty": {
+      "pattern": "illustration-or-icon-plus-explanation-plus-relevant-next-action",
+      "examples": ["empty-cart", "empty-wishlist", "no-orders", "no-search-results"]
+    },
+    "error": {
+      "pattern": "clear-message-plus-retry-or-recovery-action",
+      "avoid": ["raw-stack-trace", "silent-failure", "fake-success"]
+    },
+    "success": {
+      "pattern": "concise-confirmation-plus-next-step"
+    },
+    "disabled": {
+      "pattern": "reduced-emphasis-but-readable",
+      "mustExplain": "when the reason is not self-evident"
+    },
+    "availability": {
+      "available": "semantic.success",
+      "unavailable": "semantic.danger",
+      "comingSoon": "semantic.info",
+      "rules": [
+        "Availability and physical stock are separate concepts.",
+        "Do not hide a product solely because its stock is zero unless application requirements explicitly say so.",
+        "Never invent stock quantities or availability states."
+      ]
+    },
+    "payment": {
+      "pending": "semantic.warning",
+      "success": "semantic.success",
+      "failed": "semantic.danger",
+      "expired": "neutral.gray.600",
+      "rules": [
+        "Payment visual status must reflect trusted backend state.",
+        "A browser return or redirect is not proof of successful payment.",
+        "Do not use a success state before backend confirmation."
+      ]
+    }
+  },
+  "imagery": {
+    "productImage": {
+      "aspectRatio": "1:1",
+      "objectFit": "cover",
+      "background": "surface.subtle",
+      "radius": "lg"
+    },
+    "heroImage": {
+      "aspectRatio": "16:9",
+      "objectFit": "cover"
+    },
+    "rules": [
+      "Use clear, high-quality product photography.",
+      "Keep image aspect ratios consistent within the same product collection.",
+      "Do not distort product images.",
+      "Use a neutral image background where it improves product clarity.",
+      "Provide meaningful alt text for informative images."
+    ]
+  },
+  "iconography": {
+    "library": "lucide-react",
+    "style": "outline",
+    "defaultSize": "20px",
+    "strokeWidth": 1.8,
+    "rules": [
+      "Use one consistent icon family.",
+      "Use icons to support labels, not replace critical labels.",
+      "Use decorative icons with aria-hidden when they add no semantic information.",
+      "Do not mix unrelated icon libraries."
+    ]
+  },
+  "accessibility": {
+    "contrast": {
+      "normalTextMinimum": "4.5:1",
+      "largeTextMinimum": "3:1",
+      "nonTextMinimum": "3:1"
+    },
+    "keyboard": [
+      "All interactive elements are keyboard accessible.",
+      "Focus order follows the visual and semantic reading order.",
+      "Modal and drawer overlays trap focus when modal and restore focus on close.",
+      "Escape dismisses dismissible overlays."
+    ],
+    "touch": [
+      "Minimum interactive target is 44px by 44px where practical.",
+      "Provide adequate spacing between adjacent touch controls."
+    ],
+    "semantics": [
+      "Use semantic HTML elements.",
+      "Associate form labels and validation messages with inputs.",
+      "Expose dynamic status changes to assistive technology.",
+      "Do not communicate status by color alone.",
+      "Maintain visible focus indicators."
+    ],
+    "motion": [
+      "Respect prefers-reduced-motion.",
+      "Do not rely on animation to communicate essential information."
+    ],
+    "content": [
+      "Use clear and concise interface language.",
+      "Keep error messages actionable.",
+      "Do not truncate critical price, payment or order status information."
+    ]
+  },
+  "contentGuidelines": {
+    "voice": "clear, concise, friendly and confident",
+    "language": "Indonesian for customer-facing storefront copy unless a specific context requires otherwise",
+    "currency": {
+      "code": "IDR",
+      "locale": "id-ID",
+      "format": "Rp 1.000"
+    },
+    "rules": [
+      "Use consistent Indonesian terminology across pages.",
+      "Use explicit labels for price, shipping, discount and total.",
+      "Do not imply a discount unless a valid original and current price are available.",
+      "Avoid ambiguous labels for payment and order states."
+    ]
+  },
+  "implementation": {
+    "tokenUsage": [
+      "Map tokens to CSS custom properties.",
+      "Expose semantic tokens to Tailwind theme configuration.",
+      "Components must reference semantic tokens, not duplicate raw hex values.",
+      "Keep component visual variants centralized and typed in TypeScript."
+    ],
+    "suggestedCssVariables": {
+      "--asri-color-primary": "#2563EB",
+      "--asri-color-secondary": "#F97316",
+      "--asri-color-background": "#FFFFFF",
+      "--asri-color-surface": "#FFFFFF",
+      "--asri-color-text": "#111827",
+      "--asri-color-muted": "#6B7280",
+      "--asri-color-border": "#E5E7EB",
+      "--asri-radius-control": "10px",
+      "--asri-radius-card": "12px",
+      "--asri-space-unit": "4px",
+      "--asri-control-height": "44px"
+    },
+    "componentMapping": {
+      "AppShell.Header": ["components.Header", "components.IconButton", "components.Badge"],
+      "AppShell.BottomNavigation": ["components.BottomNavigation"],
+      "StandalonePage.StandaloneHeader": ["components.IconButton", "typography.textStyles.pageTitle"],
+      "StandalonePage.BottomActionBar": ["components.BottomActionBar", "components.Button"],
+      "Overlay.Modal": ["components.Modal"],
+      "Overlay.Drawer": ["components.Drawer"],
+      "Overlay.BottomSheet": ["components.BottomSheet"],
+      "CommerceBlocks.ProductCard": ["components.ProductCard"],
+      "CommerceBlocks.Gallery": ["components.ProductGallery"],
+      "CommerceBlocks.Filters": ["components.Chip", "components.BottomSheet"],
+      "CommerceBlocks.OrderSummary": ["components.Card", "typography.textStyles.price"]
+    },
+    "rules": [
+      "This file defines visual rules only; it does not define routes, component business logic, data fetching or payment logic.",
+      "App.json is the source of truth for application hierarchy and page classification.",
+      "design_system.json is the source of truth for tokens, component appearance and visual interaction states.",
+      "Do not install @storefront-ui/react solely because it is listed as a reference in App.json.",
+      "If a third-party component is adopted later, wrap or theme it to comply with Asri tokens and accessibility rules."
+    ]
+  },
+  "governance": {
+    "sourceOfTruth": {
+      "architecture": "App.json",
+      "visualDesign": "design_system.json",
+      "businessRules": "approved-requirements-and-domain-contracts"
+    },
+    "storefrontUiPolicy": {
+      "role": "reference-only",
+      "allowed": [
+        "Component taxonomy",
+        "Accessible interaction patterns",
+        "Reusable commerce block composition",
+        "Responsive behavior concepts"
+      ],
+      "notAllowed": [
+        "Copying Storefront UI default visual theme as Asri branding",
+        "Copying Vue implementation code into React",
+        "Allowing library defaults to override approved Asri tokens"
+      ]
+    },
+    "changeControl": [
+      "Preserve approved baseline tokens and component patterns.",
+      "Introduce future changes through semantic version increments.",
+      "Document token changes and component behavior changes in a changelog.",
+      "Do not change brand colors, typography or layout principles as incidental component styling.",
+      "Review visual changes against App.json before implementation."
+    ],
+    "versionHistory": [
+      {
+        "version": "1.0.0",
+        "status": "approved-baseline",
+        "description": "Previously approved Asri storefront design system baseline."
+      },
+      {
+        "version": "1.1.0",
+        "status": "proposed",
+        "description": "Expanded token coverage and mapped visual component and commerce-block rules to App.json V1.1.0 and Storefront UI V2 reference patterns."
+      }
+    ]
+  }
+}
