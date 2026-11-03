@@ -2,15 +2,19 @@
   "metadata": {
     "name": "Asri Store Design System",
     "product": "Asri Store",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "status": "proposed",
     "format": "design-system",
     "language": "en",
-    "description": "Visual design tokens, component appearance, interaction states and responsive presentation rules for the Asri Store application.",
+    "description": "Visual design tokens, component appearance, interaction states, page patterns and responsive presentation rules synchronized with Asri Store App.json architecture V1.2.0.",
     "architectureReference": {
       "file": "App.json",
-      "version": "1.1.0",
-      "rootGroups": ["AppShell", "StandalonePage", "Overlay"]
+      "version": "1.2.0",
+      "rootGroups": [
+        "AppShell",
+        "StandalonePage",
+        "Overlay"
+      ]
     },
     "uiReference": {
       "name": "Storefront UI",
@@ -50,8 +54,19 @@
   "brandIdentity": {
     "brandName": "Asri Store",
     "tagline": "Tampil Elegan, Setiap Hari",
-    "visualDirection": ["modern", "minimal", "premium", "clean", "fashion-focused"],
-    "personality": ["elegant", "confident", "clear", "welcoming"],
+    "visualDirection": [
+      "modern",
+      "minimal",
+      "premium",
+      "clean",
+      "fashion-focused"
+    ],
+    "personality": [
+      "elegant",
+      "confident",
+      "clear",
+      "welcoming"
+    ],
     "avoid": [
       "Unmodified Storefront UI default theme",
       "Excessive gradients and decorative effects",
@@ -235,15 +250,51 @@
         "wide": "0.02em"
       },
       "textStyles": {
-        "display": { "fontSize": "30px", "lineHeight": 1.2, "fontWeight": 700 },
-        "pageTitle": { "fontSize": "24px", "lineHeight": 1.3, "fontWeight": 600 },
-        "sectionTitle": { "fontSize": "20px", "lineHeight": 1.35, "fontWeight": 600 },
-        "cardTitle": { "fontSize": "16px", "lineHeight": 1.4, "fontWeight": 600 },
-        "body": { "fontSize": "14px", "lineHeight": 1.5, "fontWeight": 400 },
-        "bodyEmphasis": { "fontSize": "14px", "lineHeight": 1.5, "fontWeight": 600 },
-        "caption": { "fontSize": "12px", "lineHeight": 1.45, "fontWeight": 400 },
-        "button": { "fontSize": "14px", "lineHeight": 1.2, "fontWeight": 600 },
-        "price": { "fontSize": "16px", "lineHeight": 1.35, "fontWeight": 700 }
+        "display": {
+          "fontSize": "30px",
+          "lineHeight": 1.2,
+          "fontWeight": 700
+        },
+        "pageTitle": {
+          "fontSize": "24px",
+          "lineHeight": 1.3,
+          "fontWeight": 600
+        },
+        "sectionTitle": {
+          "fontSize": "20px",
+          "lineHeight": 1.35,
+          "fontWeight": 600
+        },
+        "cardTitle": {
+          "fontSize": "16px",
+          "lineHeight": 1.4,
+          "fontWeight": 600
+        },
+        "body": {
+          "fontSize": "14px",
+          "lineHeight": 1.5,
+          "fontWeight": 400
+        },
+        "bodyEmphasis": {
+          "fontSize": "14px",
+          "lineHeight": 1.5,
+          "fontWeight": 600
+        },
+        "caption": {
+          "fontSize": "12px",
+          "lineHeight": 1.45,
+          "fontWeight": 400
+        },
+        "button": {
+          "fontSize": "14px",
+          "lineHeight": 1.2,
+          "fontWeight": 600
+        },
+        "price": {
+          "fontSize": "16px",
+          "lineHeight": 1.35,
+          "fontWeight": 700
+        }
       },
       "rules": [
         "Use Inter consistently across the storefront.",
@@ -368,37 +419,63 @@
         "Avoid decorative or continuous motion.",
         "Respect prefers-reduced-motion and provide a reduced-motion experience."
       ]
+    },
+    "referencePolicy": {
+      "canonicalFormat": "tokens.{group}.{path}",
+      "aliases": {
+        "surface.*": "tokens.color.surface.*",
+        "text.*": "tokens.color.text.*",
+        "border.*": "tokens.color.border.*",
+        "brand.*": "tokens.color.brand.*",
+        "semantic.*": "tokens.color.semantic.*",
+        "commerce.*": "tokens.color.commerce.*",
+        "neutral.*": "tokens.color.neutral.*"
+      },
+      "rules": [
+        "Canonical token references use tokens.<group>.<path>.",
+        "Short semantic aliases are allowed only when they resolve unambiguously to one canonical token.",
+        "Theme overrides use canonical token paths and must not create new token families."
+      ]
     }
   },
   "themes": {
     "default": "light",
-    "supported": ["light", "dark", "system"],
+    "supported": [
+      "light",
+      "dark",
+      "system"
+    ],
     "light": {
-      "surface.page": "#FFFFFF",
-      "surface.default": "#FFFFFF",
-      "surface.subtle": "#F9FAFB",
-      "text.primary": "#111827",
-      "text.secondary": "#4B5563",
-      "border.default": "#E5E7EB"
+      "color.surface.page": "#FFFFFF",
+      "color.surface.default": "#FFFFFF",
+      "color.surface.subtle": "#F9FAFB",
+      "color.text.primary": "#111827",
+      "color.text.secondary": "#4B5563",
+      "color.border.default": "#E5E7EB",
+      "color.brand.primary.default": "#2563EB",
+      "color.brand.secondary.default": "#F97316"
     },
     "dark": {
-      "surface.page": "#111827",
-      "surface.default": "#1F2937",
-      "surface.subtle": "#374151",
-      "surface.muted": "#374151",
-      "text.primary": "#F9FAFB",
-      "text.secondary": "#D1D5DB",
-      "text.muted": "#9CA3AF",
-      "border.default": "#374151",
-      "border.subtle": "#1F2937",
-      "brand.primary": "#60A5FA",
-      "brand.secondary": "#FB923C"
+      "color.surface.page": "#111827",
+      "color.surface.default": "#1F2937",
+      "color.surface.subtle": "#374151",
+      "color.surface.muted": "#374151",
+      "color.text.primary": "#F9FAFB",
+      "color.text.secondary": "#D1D5DB",
+      "color.text.muted": "#9CA3AF",
+      "color.border.default": "#374151",
+      "color.border.subtle": "#1F2937",
+      "color.brand.primary.default": "#60A5FA",
+      "color.brand.secondary.default": "#FB923C"
     },
     "rules": [
       "All semantic tokens must resolve in every supported theme.",
       "Do not hardcode light-theme colors in reusable components.",
-      "System theme follows the operating-system preference."
-    ]
+      "System theme follows the operating-system preference.",
+      "Theme overrides use canonical token paths relative to tokens, such as color.surface.page and color.brand.primary.default.",
+      "Unspecified theme values inherit from the base tokens; every semantic token must resolve in light, dark and system modes."
+    ],
+    "tokenReferenceFormat": "tokens.{group}.{path}"
   },
   "responsive": {
     "strategy": "mobile-first",
@@ -417,14 +494,35 @@
       "desktop": "1024px-and-up"
     },
     "container": {
-      "mobile": { "width": "100%", "maxWidth": "767px", "paddingInline": "16px" },
-      "tablet": { "width": "100%", "maxWidth": "960px", "paddingInline": "24px" },
-      "desktop": { "width": "100%", "maxWidth": "1280px", "paddingInline": "32px" }
+      "mobile": {
+        "width": "100%",
+        "maxWidth": "767px",
+        "paddingInline": "16px"
+      },
+      "tablet": {
+        "width": "100%",
+        "maxWidth": "960px",
+        "paddingInline": "24px"
+      },
+      "desktop": {
+        "width": "100%",
+        "maxWidth": "1280px",
+        "paddingInline": "32px"
+      }
     },
     "grid": {
-      "productMobile": { "columns": 2, "gap": "12px" },
-      "productTablet": { "columns": 3, "gap": "16px" },
-      "productDesktop": { "columns": 4, "gap": "20px" }
+      "productMobile": {
+        "columns": 2,
+        "gap": "12px"
+      },
+      "productTablet": {
+        "columns": 3,
+        "gap": "16px"
+      },
+      "productDesktop": {
+        "columns": 4,
+        "gap": "20px"
+      }
     },
     "rules": [
       "Design and validate at 320px width before scaling up.",
@@ -501,16 +599,44 @@
   },
   "components": {
     "Button": {
-      "height": { "sm": "36px", "md": "44px", "lg": "48px" },
+      "height": {
+        "sm": "36px",
+        "md": "44px",
+        "lg": "48px"
+      },
       "radius": "md",
-      "paddingInline": { "sm": "12px", "md": "16px", "lg": "20px" },
+      "paddingInline": {
+        "sm": "12px",
+        "md": "16px",
+        "lg": "20px"
+      },
       "font": "button",
       "variants": {
-        "primary": { "background": "brand.primary.default", "foreground": "#FFFFFF", "border": "transparent" },
-        "secondary": { "background": "surface.default", "foreground": "text.primary", "border": "border.default" },
-        "outline": { "background": "transparent", "foreground": "brand.primary.default", "border": "brand.primary.default" },
-        "ghost": { "background": "transparent", "foreground": "text.primary", "border": "transparent" },
-        "danger": { "background": "semantic.danger.600", "foreground": "#FFFFFF", "border": "transparent" }
+        "primary": {
+          "background": "brand.primary.default",
+          "foreground": "#FFFFFF",
+          "border": "transparent"
+        },
+        "secondary": {
+          "background": "surface.default",
+          "foreground": "text.primary",
+          "border": "border.default"
+        },
+        "outline": {
+          "background": "transparent",
+          "foreground": "brand.primary.default",
+          "border": "brand.primary.default"
+        },
+        "ghost": {
+          "background": "transparent",
+          "foreground": "text.primary",
+          "border": "transparent"
+        },
+        "danger": {
+          "background": "semantic.danger.600",
+          "foreground": "#FFFFFF",
+          "border": "transparent"
+        }
       },
       "states": {
         "hover": "darken-background-or-strengthen-border",
@@ -519,14 +645,24 @@
         "disabled": "reduced-opacity-no-pointer",
         "loading": "preserve-width-show-progress-indicator"
       },
-      "rules": ["Use one visually dominant primary action per context.", "Do not use color alone to distinguish destructive actions."]
+      "rules": [
+        "Use one visually dominant primary action per context.",
+        "Do not use color alone to distinguish destructive actions."
+      ]
     },
     "IconButton": {
       "size": "44px",
       "iconSize": "20px",
       "radius": "full",
-      "variants": ["default", "subtle", "ghost"],
-      "rules": ["Provide an accessible name.", "Maintain a 44px target even when the visible icon is smaller."]
+      "variants": [
+        "default",
+        "subtle",
+        "ghost"
+      ],
+      "rules": [
+        "Provide an accessible name.",
+        "Maintain a 44px target even when the visible icon is smaller."
+      ]
     },
     "Input": {
       "height": "44px",
@@ -577,13 +713,25 @@
       "paddingInline": "8px",
       "radius": "full",
       "fontSize": "12px",
-      "variants": ["neutral", "brand", "success", "warning", "danger", "info"]
+      "variants": [
+        "neutral",
+        "brand",
+        "success",
+        "warning",
+        "danger",
+        "info"
+      ]
     },
     "Chip": {
       "minHeight": "32px",
       "paddingInline": "12px",
       "radius": "full",
-      "variants": ["default", "selected", "filter", "removable"]
+      "variants": [
+        "default",
+        "selected",
+        "filter",
+        "removable"
+      ]
     },
     "Card": {
       "background": "surface.default",
@@ -591,7 +739,10 @@
       "radius": "lg",
       "shadow": "none",
       "padding": "12px",
-      "interactive": { "hover": "subtle-border-or-shadow", "focus": "visible-focus-ring" }
+      "interactive": {
+        "hover": "subtle-border-or-shadow",
+        "focus": "visible-focus-ring"
+      }
     },
     "ProductCard": {
       "layout": "vertical",
@@ -645,7 +796,12 @@
     "Alert": {
       "radius": "md",
       "padding": "12px",
-      "variants": ["info", "success", "warning", "danger"]
+      "variants": [
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
     },
     "Loader": {
       "spinnerSize": "24px",
@@ -659,7 +815,10 @@
       "animation": "subtle-pulse"
     },
     "Modal": {
-      "width": { "mobile": "calc(100% - 32px)", "desktop": "480px" },
+      "width": {
+        "mobile": "calc(100% - 32px)",
+        "desktop": "480px"
+      },
       "maxHeight": "90vh",
       "radius": "xl",
       "padding": "20px",
@@ -680,14 +839,22 @@
       "background": "surface.default",
       "shadow": "overlay",
       "backdrop": "overlay.scrim",
-      "handle": { "width": "40px", "height": "4px", "color": "neutral.gray.300" }
+      "handle": {
+        "width": "40px",
+        "height": "4px",
+        "color": "neutral.gray.300"
+      }
     },
     "Toast": {
       "minHeight": "48px",
       "radius": "md",
       "shadow": "md",
       "position": "top-center",
-      "variants": ["success", "error", "info"]
+      "variants": [
+        "success",
+        "error",
+        "info"
+      ]
     },
     "Tooltip": {
       "background": "surface.inverse",
@@ -706,7 +873,10 @@
     "OrderStatus": {
       "style": "semantic-badge",
       "mustIncludeText": true,
-      "rules": ["Always pair status color with a readable status label.", "Map only confirmed backend order states to visual statuses."]
+      "rules": [
+        "Always pair status color with a readable status label.",
+        "Map only confirmed backend order states to visual statuses."
+      ]
     },
     "BottomNavigation": {
       "height": "64px",
@@ -736,6 +906,159 @@
       "fixed": false,
       "absolute": false,
       "optional": true
+    },
+    "AccordionItem": {
+      "triggerMinHeight": "48px",
+      "padding": "12px 16px",
+      "borderBottom": "border.default",
+      "icon": "chevron-down",
+      "iconSize": "20px",
+      "contentPadding": "0px 16px 16px",
+      "interaction": {
+        "focus": "visible-focus-ring",
+        "expanded": "aria-expanded-and-rotated-icon"
+      }
+    },
+    "Counter": {
+      "minWidth": "24px",
+      "height": "24px",
+      "padding": "0px 6px",
+      "radius": "full",
+      "background": "surface.subtle",
+      "text": "text.primary",
+      "fontSize": "12px",
+      "fontWeight": 600
+    },
+    "Dropdown": {
+      "background": "surface.default",
+      "border": "border.default",
+      "radius": "md",
+      "shadow": "md",
+      "padding": "4px",
+      "itemMinHeight": "44px",
+      "itemPadding": "10px 12px",
+      "interaction": {
+        "open": "aria-expanded",
+        "keyboard": "arrow-navigation-and-escape"
+      }
+    },
+    "Icon": {
+      "defaultSize": "20px",
+      "strokeWidth": 1.8,
+      "color": "text.secondary",
+      "decorativeAttribute": "aria-hidden",
+      "rules": [
+        "Use lucide-react icon names through the shared icon wrapper.",
+        "Icon-only actions must use IconButton with an accessible name."
+      ]
+    },
+    "Link": {
+      "color": "text.link",
+      "hoverColor": "text.linkHover",
+      "textDecoration": "underline-on-hover",
+      "focus": "visible-focus-ring",
+      "visited": "brand.primary.800",
+      "rules": [
+        "Use semantic anchors for navigation.",
+        "Do not style navigation links as buttons unless they trigger an action."
+      ]
+    },
+    "ListItem": {
+      "minHeight": "44px",
+      "padding": "10px 12px",
+      "gap": "12px",
+      "divider": "border.default",
+      "background": "surface.default",
+      "interactive": {
+        "hover": "surface.subtle",
+        "focus": "visible-focus-ring"
+      }
+    },
+    "LoaderCircular": {
+      "size": "24px",
+      "strokeWidth": "2px",
+      "color": "brand.primary.default",
+      "label": "accessible-status-label",
+      "motion": "respect-reduced-motion"
+    },
+    "LoaderLinear": {
+      "height": "4px",
+      "radius": "full",
+      "track": "surface.muted",
+      "indicator": "brand.primary.default",
+      "label": "accessible-status-label",
+      "motion": "respect-reduced-motion"
+    },
+    "ProgressCircular": {
+      "size": "40px",
+      "strokeWidth": "4px",
+      "track": "border.subtle",
+      "indicator": "brand.primary.default",
+      "valueLabel": "optional-visible-text",
+      "semantics": "role-progressbar-with-value"
+    },
+    "ProgressLinear": {
+      "height": "6px",
+      "radius": "full",
+      "track": "surface.muted",
+      "indicator": "brand.primary.default",
+      "valueLabel": "optional-visible-text",
+      "semantics": "role-progressbar-with-value"
+    },
+    "RatingButton": {
+      "minHeight": "44px",
+      "minWidth": "44px",
+      "icon": "star",
+      "iconSize": "20px",
+      "selectedColor": "commerce.rating",
+      "unselectedColor": "neutral.gray.300",
+      "focus": "visible-focus-ring",
+      "semantics": "button-with-pressed-state"
+    },
+    "Scrollable": {
+      "axis": "horizontal-or-vertical",
+      "scrollbar": "hidden-when-nonessential",
+      "overscroll": "contain",
+      "focus": "keyboard-scrollable-when-interactive",
+      "rules": [
+        "Do not cause page-level horizontal overflow.",
+        "Preserve visible focus and touch scrolling."
+      ]
+    },
+    "Thumbnail": {
+      "size": "64px",
+      "aspectRatio": "1:1",
+      "fit": "cover",
+      "radius": "md",
+      "background": "surface.subtle",
+      "border": "border.default",
+      "selectedBorder": "brand.primary.default"
+    },
+    "QuickView": {
+      "presentation": "modal-product-preview",
+      "width": {
+        "mobile": "calc(100% - 32px)",
+        "desktop": "560px"
+      },
+      "maxHeight": "90vh",
+      "radius": "xl",
+      "background": "surface.default",
+      "shadow": "overlay",
+      "backdrop": "overlay.scrim",
+      "composition": [
+        "ProductGallery",
+        "ProductInformation",
+        "VariantSelector",
+        "QuantitySelector",
+        "Button.primary"
+      ],
+      "closeAction": "IconButton",
+      "semantics": "dialog-with-accessible-title-and-focus-management",
+      "rules": [
+        "QuickView is an overlay, not a route.",
+        "Use current product data only.",
+        "Provide a link or action to open ProductDetailPage for full details."
+      ]
     }
   },
   "blocks": {
@@ -747,9 +1070,22 @@
       "showScrollbar": false
     },
     "ProductGrid": {
-      "columns": { "mobile": 2, "tablet": 3, "desktop": 4 },
-      "gap": { "mobile": "12px", "tablet": "16px", "desktop": "20px" },
-      "card": "ProductCard"
+      "layout": "responsive-grid",
+      "columns": {
+        "mobile": 2,
+        "tablet": 3,
+        "desktop": 4
+      },
+      "gap": {
+        "mobile": "12px",
+        "tablet": "16px",
+        "desktop": "20px"
+      },
+      "card": "ProductCard",
+      "rules": [
+        "Use the same ProductCard specification across all grids.",
+        "Do not create placeholder product cards when data is unavailable."
+      ]
     },
     "Filters": {
       "presentation": "BottomSheet-or-Drawer",
@@ -769,7 +1105,13 @@
       "preview": "Overlay.Modal"
     },
     "Checkout": {
-      "sections": ["CustomerInformation", "ShippingAddress", "ShippingMethod", "PaymentMethod", "OrderSummary"],
+      "sections": [
+        "CustomerInformation",
+        "ShippingAddress",
+        "ShippingMethod",
+        "PaymentMethod",
+        "OrderSummary"
+      ],
       "sectionSpacing": "24px",
       "fieldGap": "12px",
       "summary": "Card",
@@ -784,7 +1126,7 @@
     "FormFields": {
       "labelGap": "6px",
       "fieldGap": "12px",
-      "errorText": "semantic.danger.700",
+      "errorText": "tokens.color.semantic.danger.700",
       "helperText": "text.muted"
     },
     "Alert": {
@@ -801,31 +1143,268 @@
       "rating": "components.Rating",
       "card": "components.Card",
       "contentGap": "8px"
+    },
+    "Banners": {
+      "layout": "responsive-media-and-content",
+      "imageFit": "cover",
+      "radius": "lg",
+      "contentPadding": "16px",
+      "action": "Button.primary",
+      "rules": [
+        "Use approved campaign content and imagery only.",
+        "Do not imply an unapproved discount or promotion."
+      ]
+    },
+    "Breadcrumbs": {
+      "separator": "chevron-right",
+      "fontSize": "12px",
+      "gap": "8px",
+      "color": "text.muted",
+      "currentColor": "text.primary",
+      "currentItem": "aria-current=page",
+      "overflow": "truncate-middle-on-small-screens"
+    },
+    "Card": {
+      "container": "components.Card",
+      "padding": "12px",
+      "radius": "lg",
+      "border": "border.default",
+      "background": "surface.default",
+      "shadow": "none"
+    },
+    "Combobox": {
+      "control": "components.Input",
+      "minHeight": "44px",
+      "menu": "components.Dropdown",
+      "optionMinHeight": "44px",
+      "selectedState": "brand-color-plus-check",
+      "semantics": "combobox-listbox-option",
+      "keyboard": "arrow-enter-escape"
+    },
+    "Footer": {
+      "background": "surface.default",
+      "borderTop": "border.default",
+      "padding": "24px 16px",
+      "sectionGap": "16px",
+      "linkColor": "text.secondary",
+      "layout": "stack-mobile-and-responsive-columns"
+    },
+    "MegaMenu": {
+      "background": "surface.default",
+      "border": "border.default",
+      "shadow": "md",
+      "padding": "16px",
+      "radius": "lg",
+      "columns": {
+        "tablet": 2,
+        "desktop": 3
+      },
+      "interaction": "keyboard-accessible-disclosure"
+    },
+    "NavbarBottom": {
+      "height": "64px",
+      "background": "surface.default",
+      "borderTop": "border.default",
+      "itemTarget": "44px",
+      "activeColor": "brand.primary.default",
+      "inactiveColor": "text.muted",
+      "mapping": "AppShell.BottomNavigation"
+    },
+    "NavbarTop": {
+      "height": "56px",
+      "background": "surface.default",
+      "borderBottom": "border.default",
+      "horizontalPadding": "16px",
+      "actionTarget": "44px",
+      "mapping": "AppShell.Header"
+    },
+    "NewsletterBox": {
+      "background": "surface.subtle",
+      "border": "border.default",
+      "radius": "lg",
+      "padding": "16px",
+      "field": "components.Input",
+      "action": "components.Button",
+      "layout": "stack-mobile"
+    },
+    "ProductCard": {
+      "component": "components.ProductCard",
+      "imageAspectRatio": "1:1",
+      "titleLines": 2,
+      "priceEmphasis": "strong",
+      "wishlistAction": "top-right",
+      "rules": [
+        "Use only sourced product data.",
+        "Do not fabricate stock, ratings, review counts or discounts."
+      ]
+    },
+    "QuantitySelector": {
+      "component": "components.QuantitySelector",
+      "height": "40px",
+      "buttonTarget": "40px",
+      "inputMinWidth": "40px",
+      "gap": "0px"
+    },
+    "RatingForms": {
+      "layout": "stack",
+      "ratingControl": "components.RatingButton",
+      "fieldGap": "12px",
+      "submitAction": "components.Button.primary",
+      "validation": "components.Alert"
+    },
+    "SelectDropdown": {
+      "control": "components.Select",
+      "menu": "components.Dropdown",
+      "optionMinHeight": "44px",
+      "selectedState": "brand-color-plus-check",
+      "semantics": "listbox-option"
+    },
+    "Tabs": {
+      "component": "components.Tabs",
+      "height": "44px",
+      "activeIndicator": "brand.primary.default",
+      "inactiveText": "text.secondary",
+      "keyboard": "arrow-navigation-and-aria-selected"
     }
   },
   "pagePatterns": {
     "AppShell": {
-      "HomePage": ["Header", "HeroBanner", "CategoryShortcuts", "ProductSlider", "ProductGrid", "BottomNavigation"],
-      "ShopPage": ["Header", "Search", "CategoryOrFilterControls", "ProductGrid", "BottomNavigation"],
-      "CategoriesPage": ["Header", "CategoryGrid", "BottomNavigation"],
-      "SearchPage": ["Header", "Search", "SearchResultsOrEmptyState", "BottomNavigation"],
-      "WishlistPage": ["Header", "ProductGridOrEmptyState", "BottomNavigation"],
-      "CartPage": ["Header", "CartList", "OrderSummary", "BottomNavigation"],
-      "OrdersPage": ["Header", "OrderCardList", "EmptyState", "BottomNavigation"],
-      "OrderDetailPage": ["Header", "OrderStatus", "OrderTimeline", "OrderItems", "OrderSummary", "BottomNavigation"],
-      "ProfilePage": ["Header", "ProfileSummary", "AccountMenu", "BottomNavigation"]
+      "HomePage": [
+        "Header",
+        "HeroBanner",
+        "CategoryShortcuts",
+        "ProductSlider",
+        "ProductGrid",
+        "BottomNavigation"
+      ],
+      "ShopPage": [
+        "Header",
+        "Search",
+        "CategoryOrFilterControls",
+        "ProductGrid",
+        "BottomNavigation"
+      ],
+      "CategoriesPage": [
+        "Header",
+        "CategoryGrid",
+        "BottomNavigation"
+      ],
+      "SearchPage": [
+        "Header",
+        "Search",
+        "SearchResultsOrEmptyState",
+        "BottomNavigation"
+      ],
+      "WishlistPage": [
+        "Header",
+        "ProductGridOrEmptyState",
+        "BottomNavigation"
+      ],
+      "CartPage": [
+        "Header",
+        "CartList",
+        "OrderSummary",
+        "BottomNavigation"
+      ],
+      "OrdersPage": [
+        "Header",
+        "OrderCardList",
+        "EmptyState",
+        "BottomNavigation"
+      ],
+      "OrderDetailPage": [
+        "Header",
+        "OrderStatus",
+        "OrderTimeline",
+        "OrderItems",
+        "OrderSummary",
+        "BottomNavigation"
+      ],
+      "ProfilePage": [
+        "Header",
+        "ProfileSummary",
+        "AccountMenu",
+        "BottomNavigation"
+      ],
+      "AboutPage": [
+        "Header",
+        "PageIntro",
+        "RichContentSections",
+        "BottomNavigation"
+      ],
+      "ContactPage": [
+        "Header",
+        "PageIntro",
+        "ContactInformation",
+        "ContactForm",
+        "BottomNavigation"
+      ],
+      "HelpCenterPage": [
+        "Header",
+        "Search",
+        "HelpTopicList",
+        "ContactSupportLink",
+        "BottomNavigation"
+      ]
     },
     "StandalonePage": {
-      "ProductDetailPage": ["StandaloneHeader", "ProductGallery", "ProductInformation", "VariantSelector", "QuantitySelector", "ProductDetails", "BottomActionBar"],
-      "CheckoutPage": ["StandaloneHeader", "Checkout", "OrderSummary", "BottomActionBar"],
-      "ShippingAddressPage": ["StandaloneHeader", "FormFields", "BottomActionBar"],
-      "PaymentPage": ["StandaloneHeader", "PaymentInstructionsOrMethods", "OrderSummary", "BottomActionBar"],
-      "PaymentReturnPage": ["StandaloneHeader", "PaymentStatus", "NextStepInformation"],
-      "OrderSuccessPage": ["StandaloneHeader", "SuccessState", "OrderSummary", "BottomActionBar"],
-      "OrderTrackingPage": ["StandaloneHeader", "OrderTimeline", "ShippingInformation"],
-      "EditProfilePage": ["StandaloneHeader", "FormFields", "BottomActionBar"],
-      "ReturnRefundPage": ["StandaloneHeader", "ReturnInformation", "FormFields", "BottomActionBar"],
-      "NotFoundPage": ["StandaloneHeader", "NotFoundState"]
+      "ProductDetailPage": [
+        "StandaloneHeader",
+        "ProductGallery",
+        "ProductInformation",
+        "VariantSelector",
+        "QuantitySelector",
+        "ProductDetails",
+        "BottomActionBar"
+      ],
+      "CheckoutPage": [
+        "StandaloneHeader",
+        "Checkout",
+        "OrderSummary",
+        "BottomActionBar"
+      ],
+      "ShippingAddressPage": [
+        "StandaloneHeader",
+        "FormFields",
+        "BottomActionBar"
+      ],
+      "PaymentPage": [
+        "StandaloneHeader",
+        "PaymentInstructionsOrMethods",
+        "OrderSummary",
+        "BottomActionBar"
+      ],
+      "PaymentReturnPage": [
+        "StandaloneHeader",
+        "PaymentStatus",
+        "NextStepInformation"
+      ],
+      "OrderSuccessPage": [
+        "StandaloneHeader",
+        "SuccessState",
+        "OrderSummary",
+        "BottomActionBar"
+      ],
+      "OrderTrackingPage": [
+        "StandaloneHeader",
+        "OrderTimeline",
+        "ShippingInformation"
+      ],
+      "EditProfilePage": [
+        "StandaloneHeader",
+        "FormFields",
+        "BottomActionBar"
+      ],
+      "ReturnRefundPage": [
+        "StandaloneHeader",
+        "ReturnInformation",
+        "FormFields",
+        "BottomActionBar"
+      ],
+      "NotFoundPage": [
+        "StandaloneHeader",
+        "NotFoundState"
+      ]
     },
     "rules": [
       "Page patterns describe visual composition, not route definitions or business logic.",
@@ -874,15 +1453,28 @@
   "states": {
     "loading": {
       "pattern": "skeleton-for-content-and-loader-for-actions",
-      "avoid": ["blank-page", "layout-shift", "fake-product-data"]
+      "avoid": [
+        "blank-page",
+        "layout-shift",
+        "fake-product-data"
+      ]
     },
     "empty": {
       "pattern": "illustration-or-icon-plus-explanation-plus-relevant-next-action",
-      "examples": ["empty-cart", "empty-wishlist", "no-orders", "no-search-results"]
+      "examples": [
+        "empty-cart",
+        "empty-wishlist",
+        "no-orders",
+        "no-search-results"
+      ]
     },
     "error": {
       "pattern": "clear-message-plus-retry-or-recovery-action",
-      "avoid": ["raw-stack-trace", "silent-failure", "fake-success"]
+      "avoid": [
+        "raw-stack-trace",
+        "silent-failure",
+        "fake-success"
+      ]
     },
     "success": {
       "pattern": "concise-confirmation-plus-next-step"
@@ -997,7 +1589,9 @@
       "Map tokens to CSS custom properties.",
       "Expose semantic tokens to Tailwind theme configuration.",
       "Components must reference semantic tokens, not duplicate raw hex values.",
-      "Keep component visual variants centralized and typed in TypeScript."
+      "Keep component visual variants centralized and typed in TypeScript.",
+      "Resolve component token aliases through tokens.referencePolicy; do not hardcode theme-specific colors.",
+      "Theme overrides use the canonical token paths declared in themes.tokenReferenceFormat."
     ],
     "suggestedCssVariables": {
       "--asri-color-primary": "#2563EB",
@@ -1013,25 +1607,84 @@
       "--asri-control-height": "44px"
     },
     "componentMapping": {
-      "AppShell.Header": ["components.Header", "components.IconButton", "components.Badge"],
-      "AppShell.BottomNavigation": ["components.BottomNavigation"],
-      "StandalonePage.StandaloneHeader": ["components.IconButton", "typography.textStyles.pageTitle"],
-      "StandalonePage.BottomActionBar": ["components.BottomActionBar", "components.Button"],
-      "Overlay.Modal": ["components.Modal"],
-      "Overlay.Drawer": ["components.Drawer"],
-      "Overlay.BottomSheet": ["components.BottomSheet"],
-      "CommerceBlocks.ProductCard": ["components.ProductCard"],
-      "CommerceBlocks.Gallery": ["components.ProductGallery"],
-      "CommerceBlocks.Filters": ["components.Chip", "components.BottomSheet"],
-      "CommerceBlocks.OrderSummary": ["components.Card", "typography.textStyles.price"]
+      "AppShell.Header": [
+        "components.Header",
+        "components.IconButton",
+        "components.Badge"
+      ],
+      "AppShell.BottomNavigation": [
+        "components.BottomNavigation"
+      ],
+      "StandalonePage.StandaloneHeader": [
+        "components.IconButton",
+        "typography.textStyles.pageTitle"
+      ],
+      "StandalonePage.BottomActionBar": [
+        "components.BottomActionBar",
+        "components.Button"
+      ],
+      "Overlay.Modal": [
+        "components.Modal"
+      ],
+      "Overlay.Drawer": [
+        "components.Drawer"
+      ],
+      "Overlay.BottomSheet": [
+        "components.BottomSheet"
+      ],
+      "CommerceBlocks.ProductCard": [
+        "components.ProductCard"
+      ],
+      "CommerceBlocks.Gallery": [
+        "components.ProductGallery"
+      ],
+      "CommerceBlocks.Filters": [
+        "components.Chip",
+        "components.BottomSheet"
+      ],
+      "CommerceBlocks.OrderSummary": [
+        "components.Card",
+        "typography.textStyles.price"
+      ],
+      "Overlay.QuickView": [
+        "components.QuickView",
+        "components.ProductCard",
+        "components.Button"
+      ],
+      "Overlay.ProductQuickView": [
+        "components.QuickView"
+      ],
+      "CommerceBlocks.ProductGrid": [
+        "components.ProductGrid",
+        "components.ProductCard"
+      ]
     },
     "rules": [
       "This file defines visual rules only; it does not define routes, component business logic, data fetching or payment logic.",
       "App.json is the source of truth for application hierarchy and page classification.",
       "design_system.json is the source of truth for tokens, component appearance and visual interaction states.",
       "Do not install @storefront-ui/react solely because it is listed as a reference in App.json.",
-      "If a third-party component is adopted later, wrap or theme it to comply with Asri tokens and accessibility rules."
-    ]
+      "If a third-party component is adopted later, wrap or theme it to comply with Asri tokens and accessibility rules.",
+      "Every component in App.json BaseComponents must have a matching visual specification in components.",
+      "Every component in App.json CommerceBlocks must have a matching visual specification in blocks.",
+      "Every page in App.json page classification must have a matching pagePatterns entry.",
+      "Every App.json Overlay group must have a matching visual pattern and implementation mapping."
+    ],
+    "namespaceMapping": {
+      "App.json.app.uiFoundation.layers.BaseComponents": "src/components/ui",
+      "App.json.app.uiFoundation.layers.CommerceBlocks": "src/components/blocks",
+      "App.json.featureArchitecture.features.*.components": "src/features/*/components",
+      "App.json.featureArchitecture.features.*.hooks": "src/features/*/hooks",
+      "App.json.app.uiFoundation.layers.InteractionHooks": "src/hooks",
+      "App.json.Overlay": "src/app/overlays",
+      "rules": [
+        "App.json names are architecture identifiers; implementation paths are code ownership locations.",
+        "BaseComponents map one-to-one to shared UI primitives unless a documented composition is required.",
+        "CommerceBlocks compose BaseComponents and map to reusable blocks.",
+        "FeatureComponents remain owned by their feature modules and are not promoted to shared components without review.",
+        "Overlay group names and overlay instances map to src/app/overlays and are not route definitions."
+      ]
+    }
   },
   "governance": {
     "sourceOfTruth": {
@@ -1058,7 +1711,10 @@
       "Introduce future changes through semantic version increments.",
       "Document token changes and component behavior changes in a changelog.",
       "Do not change brand colors, typography or layout principles as incidental component styling.",
-      "Review visual changes against App.json before implementation."
+      "Review visual changes against App.json before implementation.",
+      "Keep App.json architectureVersion and design_system.json metadata.architectureReference.version synchronized.",
+      "Keep component, block, page-pattern and overlay coverage synchronized with App.json.",
+      "Run the cross-file consistency checks before approving a version."
     ],
     "versionHistory": [
       {
@@ -1070,7 +1726,26 @@
         "version": "1.1.0",
         "status": "proposed",
         "description": "Expanded token coverage and mapped visual component and commerce-block rules to App.json V1.1.0 and Storefront UI V2 reference patterns."
+      },
+      {
+        "version": "1.2.0",
+        "status": "proposed",
+        "description": "Aligned component taxonomy, commerce blocks, page patterns, overlay mapping, responsive container semantics, token references and cross-file governance with App.json V1.2.0."
       }
-    ]
+    ],
+    "validation": {
+      "requiredChecks": [
+        "App.json app.architectureVersion equals design_system.json metadata.architectureReference.version.",
+        "Every AppShell and StandalonePage page has exactly one matching pagePatterns entry.",
+        "Every App.json BaseComponents item exists in design_system.json components.",
+        "Every App.json CommerceBlocks item exists in design_system.json blocks.",
+        "Every App.json Overlay group has a matching visual component and implementation mapping.",
+        "Every componentMapping target resolves to a defined component, block, or typography text style.",
+        "Every token reference resolves through canonical tokens or an explicit alias."
+      ],
+      "expectedCommand": "node scripts/validate-design-contract.mjs",
+      "commandStatus": "not-yet-implemented",
+      "note": "The validation contract is specified here; this JSON update does not create the validator script."
+    }
   }
 }
