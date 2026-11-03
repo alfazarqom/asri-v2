@@ -1633,18 +1633,16 @@
         "components.BottomSheet"
       ],
       "CommerceBlocks.ProductCard": [
-        "components.ProductCard"
+        "blocks.ProductCard"
       ],
       "CommerceBlocks.Gallery": [
-        "components.ProductGallery"
+        "blocks.Gallery"
       ],
       "CommerceBlocks.Filters": [
-        "components.Chip",
-        "components.BottomSheet"
+        "blocks.Filters"
       ],
       "CommerceBlocks.OrderSummary": [
-        "components.Card",
-        "typography.textStyles.price"
+        "blocks.OrderSummary"
       ],
       "Overlay.QuickView": [
         "components.QuickView",
@@ -1655,8 +1653,7 @@
         "components.QuickView"
       ],
       "CommerceBlocks.ProductGrid": [
-        "components.ProductGrid",
-        "components.ProductCard"
+        "blocks.ProductGrid"
       ],
       "Overlay.Toast": [
         "components.Toast"
@@ -1664,6 +1661,144 @@
       "Overlay.Popover": [
         "components.Popover",
         "components.Tooltip"
+      ],
+      "BaseComponents.AccordionItem": [
+        "components.AccordionItem"
+      ],
+      "BaseComponents.Badge": [
+        "components.Badge"
+      ],
+      "BaseComponents.Button": [
+        "components.Button"
+      ],
+      "BaseComponents.Checkbox": [
+        "components.Checkbox"
+      ],
+      "BaseComponents.Chip": [
+        "components.Chip"
+      ],
+      "BaseComponents.Counter": [
+        "components.Counter"
+      ],
+      "BaseComponents.Drawer": [
+        "components.Drawer"
+      ],
+      "BaseComponents.Dropdown": [
+        "components.Dropdown"
+      ],
+      "BaseComponents.Icon": [
+        "components.Icon"
+      ],
+      "BaseComponents.Input": [
+        "components.Input"
+      ],
+      "BaseComponents.Link": [
+        "components.Link"
+      ],
+      "BaseComponents.ListItem": [
+        "components.ListItem"
+      ],
+      "BaseComponents.LoaderCircular": [
+        "components.LoaderCircular"
+      ],
+      "BaseComponents.LoaderLinear": [
+        "components.LoaderLinear"
+      ],
+      "BaseComponents.Modal": [
+        "components.Modal"
+      ],
+      "BaseComponents.ProgressCircular": [
+        "components.ProgressCircular"
+      ],
+      "BaseComponents.ProgressLinear": [
+        "components.ProgressLinear"
+      ],
+      "BaseComponents.Radio": [
+        "components.Radio"
+      ],
+      "BaseComponents.Rating": [
+        "components.Rating"
+      ],
+      "BaseComponents.RatingButton": [
+        "components.RatingButton"
+      ],
+      "BaseComponents.Scrollable": [
+        "components.Scrollable"
+      ],
+      "BaseComponents.Select": [
+        "components.Select"
+      ],
+      "BaseComponents.Switch": [
+        "components.Switch"
+      ],
+      "BaseComponents.Textarea": [
+        "components.Textarea"
+      ],
+      "BaseComponents.Thumbnail": [
+        "components.Thumbnail"
+      ],
+      "BaseComponents.Tooltip": [
+        "components.Tooltip"
+      ],
+      "CommerceBlocks.Alert": [
+        "blocks.Alert"
+      ],
+      "CommerceBlocks.Banners": [
+        "blocks.Banners"
+      ],
+      "CommerceBlocks.Breadcrumbs": [
+        "blocks.Breadcrumbs"
+      ],
+      "CommerceBlocks.Card": [
+        "blocks.Card"
+      ],
+      "CommerceBlocks.Checkout": [
+        "blocks.Checkout"
+      ],
+      "CommerceBlocks.Combobox": [
+        "blocks.Combobox"
+      ],
+      "CommerceBlocks.Footer": [
+        "blocks.Footer"
+      ],
+      "CommerceBlocks.FormFields": [
+        "blocks.FormFields"
+      ],
+      "CommerceBlocks.MegaMenu": [
+        "blocks.MegaMenu"
+      ],
+      "CommerceBlocks.NavbarBottom": [
+        "blocks.NavbarBottom"
+      ],
+      "CommerceBlocks.NavbarTop": [
+        "blocks.NavbarTop"
+      ],
+      "CommerceBlocks.NewsletterBox": [
+        "blocks.NewsletterBox"
+      ],
+      "CommerceBlocks.Pagination": [
+        "blocks.Pagination"
+      ],
+      "CommerceBlocks.ProductSlider": [
+        "blocks.ProductSlider"
+      ],
+      "CommerceBlocks.QuantitySelector": [
+        "blocks.QuantitySelector"
+      ],
+      "CommerceBlocks.RatingForms": [
+        "blocks.RatingForms"
+      ],
+      "CommerceBlocks.Review": [
+        "blocks.Review"
+      ],
+      "CommerceBlocks.Search": [
+        "blocks.Search"
+      ],
+      "CommerceBlocks.SelectDropdown": [
+        "blocks.SelectDropdown"
+      ],
+      "CommerceBlocks.Tabs": [
+        "blocks.Tabs"
       ]
     },
     "rules": [
