@@ -1,16 +1,121 @@
 {
   "app": {
     "name": "Asri Store",
-    "architectureVersion": "1.0.0",
-    "description": "E-commerce storefront application architecture",
+    "architectureVersion": "1.1.0",
+    "description": "Mobile-first e-commerce storefront architecture for React, Vite and TypeScript.",
     "framework": {
-      "frontend": ["React", "Vite", "TypeScript"],
+      "frontend": {
+        "framework": "React",
+        "bundler": "Vite",
+        "language": "TypeScript"
+      },
       "backend": "Supabase",
       "deployment": "Vercel"
     },
+    "uiFoundation": {
+      "reference": {
+        "name": "Storefront UI",
+        "version": "2",
+        "documentation": "https://docs.storefrontui.io/v2/",
+        "reactDocumentation": "https://docs.storefrontui.io/v2/getting-started/react",
+        "role": "Reference for accessible base components, e-commerce blocks, interaction patterns and composable UI behavior."
+      },
+      "adoption": {
+        "strategy": "selective-adaptation",
+        "package": "@storefront-ui/react",
+        "packageStatus": "reference-only-not-yet-installed",
+        "rules": [
+          "Use React-specific Storefront UI documentation and APIs; do not copy Vue templates or Vue Composition API code into the React application.",
+          "Treat Storefront UI as a reference and optional component foundation, not as the application architecture or business logic layer.",
+          "Adapt component styling and behavior to the approved Asri design system.",
+          "Do not introduce a dependency until package compatibility, styling requirements and project setup are reviewed.",
+          "Do not couple domain features, data fetching or payment logic to presentation components."
+        ]
+      },
+      "layers": {
+        "BaseComponents": [
+          "AccordionItem",
+          "Badge",
+          "Button",
+          "Checkbox",
+          "Chip",
+          "Counter",
+          "Drawer",
+          "Dropdown",
+          "Icon",
+          "Input",
+          "Link",
+          "ListItem",
+          "LoaderCircular",
+          "LoaderLinear",
+          "Modal",
+          "ProgressCircular",
+          "ProgressLinear",
+          "Radio",
+          "Rating",
+          "RatingButton",
+          "Scrollable",
+          "Select",
+          "Switch",
+          "Textarea",
+          "Thumbnail",
+          "Tooltip"
+        ],
+        "CommerceBlocks": [
+          "Alert",
+          "Banners",
+          "Breadcrumbs",
+          "Card",
+          "Checkout",
+          "Combobox",
+          "Filters",
+          "Footer",
+          "FormFields",
+          "Gallery",
+          "MegaMenu",
+          "NavbarBottom",
+          "NavbarTop",
+          "NewsletterBox",
+          "OrderSummary",
+          "Pagination",
+          "ProductCard",
+          "ProductSlider",
+          "QuantitySelector",
+          "RatingForms",
+          "Review",
+          "Search",
+          "SelectDropdown",
+          "Tabs"
+        ],
+        "InteractionHooks": [
+          "useDisclosure",
+          "useDropdown",
+          "useFocusVisible",
+          "usePagination",
+          "usePopover",
+          "useScrollable",
+          "useTooltip",
+          "useTrapFocus"
+        ]
+      },
+      "componentCompositionRules": [
+        "BaseComponents are low-level reusable UI primitives.",
+        "CommerceBlocks compose BaseComponents into reusable commerce patterns.",
+        "Feature components compose CommerceBlocks and domain-specific UI.",
+        "Pages compose feature components and are rendered by exactly one page layout.",
+        "Hooks encapsulate reusable interaction state; domain hooks remain in their feature modules.",
+        "Keep presentational components independent from Supabase and Duitku request details."
+      ]
+    },
     "root": {
       "App": {
-        "children": ["AppShell", "StandalonePage", "Overlay"]
+        "children": ["AppShell", "StandalonePage", "Overlay"],
+        "responsibilities": [
+          "Initialize application providers.",
+          "Resolve the current route.",
+          "Render the matching page layout.",
+          "Mount the global OverlayHost."
+        ]
       }
     }
   },
@@ -18,7 +123,12 @@
     "description": "Shared storefront layout for pages that use the primary application navigation.",
     "layout": {
       "Header": {
-        "components": ["Logo", "SearchButton", "CartButton", "ProfileButton"]
+        "components": [
+          "Logo",
+          "SearchButton",
+          "CartButton",
+          "ProfileButton"
+        ]
       },
       "MainContent": {
         "pages": [
@@ -37,20 +147,37 @@
         ]
       },
       "BottomNavigation": {
-        "items": ["Home", "Shop", "Wishlist", "Orders", "Profile"]
+        "items": [
+          "Home",
+          "Shop",
+          "Wishlist",
+          "Orders",
+          "Profile"
+        ]
       }
+    },
+    "composition": {
+      "Header": ["BaseComponents.Button", "BaseComponents.Badge", "BaseComponents.Icon"],
+      "BottomNavigation": ["BaseComponents.Button", "BaseComponents.Icon"],
+      "MainContent": ["FeatureComponents", "CommerceBlocks"]
     },
     "rules": [
       "Use AppShell for pages that share the storefront header and bottom navigation.",
       "Page content is rendered inside MainContent.",
-      "Do not place standalone transactional pages inside AppShell."
+      "Do not place standalone transactional pages inside AppShell.",
+      "Use responsive and accessible navigation patterns.",
+      "Do not assume a Storefront UI block is installed; implement or adapt it within the Asri component system."
     ]
   },
   "StandalonePage": {
     "description": "Independent page layout for focused tasks, transactional flows, and pages with a primary action.",
     "layout": {
       "StandaloneHeader": {
-        "components": ["BackButton", "PageTitle", "OptionalHeaderAction"]
+        "components": [
+          "BackButton",
+          "PageTitle",
+          "OptionalHeaderAction"
+        ]
       },
       "PageContent": {
         "pages": [
@@ -69,38 +196,164 @@
       "BottomActionBar": {
         "purpose": "Contains the page's primary action and relevant supporting summary when needed.",
         "positioning": "natural-document-flow",
-        "positioningRestrictions": ["not-fixed", "not-absolute"],
+        "positioningRestrictions": [
+          "not-fixed",
+          "not-absolute"
+        ],
         "visibility": "optional",
         "rules": [
           "Place the primary page action in BottomActionBar when the page has a primary action.",
           "Keep BottomActionBar at the end of the StandalonePage layout, after PageContent.",
           "BottomActionBar remains in normal document flow and must not overlay page content.",
           "Do not render an empty BottomActionBar when no primary action exists.",
-          "Secondary or contextual actions may remain inside PageContent."
+          "Secondary or contextual actions may remain inside PageContent.",
+          "Use BaseComponents.Button and commerce summary blocks where appropriate."
         ]
       }
+    },
+    "composition": {
+      "StandaloneHeader": ["BaseComponents.Button", "BaseComponents.Icon"],
+      "BottomActionBar": ["BaseComponents.Button", "CommerceBlocks.OrderSummary"],
+      "PageContent": ["FeatureComponents", "CommerceBlocks"]
     },
     "rules": [
       "Use StandalonePage for focused flows that should not display the storefront BottomNavigation.",
       "ProductDetailPage belongs to StandalonePage because it has a primary purchase action.",
-      "Transactional pages should use a clear single primary action where applicable."
+      "Transactional pages should use a clear single primary action where applicable.",
+      "Payment state and order state must be determined by trusted backend responses, not UI component state."
     ]
   },
   "Overlay": {
     "description": "Global transient interface layer that can be opened from AppShell or StandalonePage. Overlay is not a route or page layout.",
     "groups": {
-      "Modal": ["ConfirmModal", "AlertModal", "ImagePreviewModal"],
-      "Drawer": ["NavigationDrawer", "FilterDrawer", "CartDrawer"],
-      "BottomSheet": ["SortBottomSheet", "FilterBottomSheet", "VariantBottomSheet", "AddressBottomSheet"],
-      "QuickView": ["ProductQuickView"],
-      "Toast": ["SuccessToast", "ErrorToast", "InfoToast"],
-      "Popover": ["AccountPopover", "Tooltip"]
+      "Modal": [
+        "ConfirmModal",
+        "AlertModal",
+        "ImagePreviewModal"
+      ],
+      "Drawer": [
+        "NavigationDrawer",
+        "FilterDrawer",
+        "CartDrawer"
+      ],
+      "BottomSheet": [
+        "SortBottomSheet",
+        "FilterBottomSheet",
+        "VariantBottomSheet",
+        "AddressBottomSheet"
+      ],
+      "QuickView": [
+        "ProductQuickView"
+      ],
+      "Toast": [
+        "SuccessToast",
+        "ErrorToast",
+        "InfoToast"
+      ],
+      "Popover": [
+        "AccountPopover",
+        "Tooltip"
+      ]
     },
+    "composition": {
+      "Modal": ["BaseComponents.Modal", "BaseComponents.Button"],
+      "Drawer": ["BaseComponents.Drawer", "BaseComponents.Button"],
+      "BottomSheet": ["BaseComponents.Drawer", "BaseComponents.Button"],
+      "Popover": ["BaseComponents.Dropdown", "BaseComponents.Tooltip"]
+    },
+    "interactionHooks": [
+      "InteractionHooks.useDisclosure",
+      "InteractionHooks.usePopover",
+      "InteractionHooks.useTooltip",
+      "InteractionHooks.useTrapFocus"
+    ],
     "rules": [
-      "Overlay components are rendered through a shared overlay host or portal.",
+      "Overlay components are rendered through a shared OverlayHost or portal.",
       "Any page in AppShell or StandalonePage may request an overlay.",
       "Overlay visibility and state must be controlled independently from route navigation.",
-      "Provide accessible labels, focus handling, keyboard dismissal, and appropriate modal semantics."
+      "Provide accessible labels, focus handling, keyboard dismissal, and appropriate modal semantics.",
+      "Restore focus to the invoking element after dismissing modal or drawer overlays."
+    ]
+  },
+  "featureArchitecture": {
+    "features": {
+      "catalog": {
+        "components": [
+          "ProductCard",
+          "ProductGrid",
+          "ProductSlider",
+          "ProductGallery",
+          "ProductFilters",
+          "ProductSort",
+          "ProductVariantSelector"
+        ],
+        "commerceBlocks": [
+          "CommerceBlocks.ProductCard",
+          "CommerceBlocks.ProductSlider",
+          "CommerceBlocks.Gallery",
+          "CommerceBlocks.Filters",
+          "CommerceBlocks.Pagination",
+          "CommerceBlocks.QuantitySelector",
+          "CommerceBlocks.Review"
+        ]
+      },
+      "cart": {
+        "components": [
+          "CartItem",
+          "CartList",
+          "CartSummary",
+          "CartEmptyState"
+        ],
+        "commerceBlocks": [
+          "CommerceBlocks.Card",
+          "CommerceBlocks.OrderSummary",
+          "CommerceBlocks.QuantitySelector"
+        ]
+      },
+      "checkout": {
+        "components": [
+          "CheckoutForm",
+          "CustomerInformationForm",
+          "ShippingAddressForm",
+          "ShippingMethodSelector",
+          "PaymentMethodSelector",
+          "CheckoutSummary"
+        ],
+        "commerceBlocks": [
+          "CommerceBlocks.Checkout",
+          "CommerceBlocks.FormFields",
+          "CommerceBlocks.OrderSummary"
+        ]
+      },
+      "orders": {
+        "components": [
+          "OrderCard",
+          "OrderStatus",
+          "OrderTimeline",
+          "OrderItems"
+        ],
+        "commerceBlocks": [
+          "CommerceBlocks.Card",
+          "CommerceBlocks.OrderSummary"
+        ]
+      },
+      "reviews": {
+        "components": [
+          "RatingSummary",
+          "ReviewList",
+          "ReviewForm"
+        ],
+        "commerceBlocks": [
+          "CommerceBlocks.RatingForms",
+          "CommerceBlocks.Review"
+        ]
+      }
+    },
+    "rules": [
+      "Feature components are owned by their feature module.",
+      "Reusable generic primitives belong in the shared component layer.",
+      "Do not create duplicate components when an approved shared component already covers the requirement.",
+      "Keep business validation and data access in feature hooks or services, not in visual blocks."
     ]
   },
   "pageClassification": {
@@ -149,12 +402,89 @@
       "Tooltip"
     ]
   },
+  "projectStructure": {
+    "root": "src/",
+    "directories": {
+      "app": [
+        "App.tsx",
+        "router/",
+        "providers/",
+        "layouts/AppShell/",
+        "layouts/StandalonePage/",
+        "overlays/OverlayHost.tsx"
+      ],
+      "components": [
+        "ui/",
+        "blocks/",
+        "shared/"
+      ],
+      "features": [
+        "catalog/",
+        "cart/",
+        "wishlist/",
+        "checkout/",
+        "orders/",
+        "profile/",
+        "reviews/"
+      ],
+      "hooks": [
+        "shared interaction hooks only"
+      ],
+      "services": [
+        "supabase/",
+        "payments/",
+        "shipping/"
+      ],
+      "stores": [
+        "cart/",
+        "wishlist/"
+      ],
+      "types": [
+        "shared domain types"
+      ],
+      "utils": [
+        "formatters/",
+        "validators/"
+      ],
+      "styles": [
+        "tokens.css",
+        "global.css"
+      ]
+    },
+    "rules": [
+      "Use TypeScript for application source files.",
+      "Keep route configuration in app/router.",
+      "Keep shared UI primitives in components/ui and reusable commerce patterns in components/blocks.",
+      "Keep feature-specific components, hooks, services and types within their feature when practical.",
+      "Keep design tokens and global styles separate from component implementation."
+    ]
+  },
   "routing": {
     "principles": [
       "Each route maps to exactly one page component.",
       "Each page uses exactly one primary layout classification: AppShell or StandalonePage.",
       "Overlay components are not registered as page routes.",
       "Unknown routes render NotFoundPage using StandalonePage."
+    ]
+  },
+  "accessibility": {
+    "requirements": [
+      "Use semantic HTML elements and accessible names.",
+      "All interactive controls must be keyboard accessible.",
+      "Inputs must have associated labels and clear validation feedback.",
+      "Modal and drawer interactions must manage and restore focus.",
+      "Provide visible focus states and sufficient color contrast.",
+      "Do not communicate status by color alone."
+    ]
+  },
+  "governance": {
+    "status": "architecture-reference",
+    "rules": [
+      "App.json defines application architecture and component composition, not the visual design token source of truth.",
+      "The approved design system remains the source of truth for colors, typography, spacing, sizing, radii and visual variants.",
+      "Storefront UI is a reference library; its examples must be adapted to Asri conventions.",
+      "Do not install packages, create application source files or alter backend configuration as part of an App.json-only architecture update.",
+      "Version architecture changes incrementally and record material deviations from the Storefront UI reference."
     ]
   }
 }
